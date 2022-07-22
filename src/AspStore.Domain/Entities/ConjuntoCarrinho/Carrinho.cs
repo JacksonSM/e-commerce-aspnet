@@ -1,11 +1,11 @@
-﻿using AspStore.Domain.Entities;
+﻿using AspStore.Entities;
 using System.Collections.Generic;
 
 namespace AspStore.Domain.Entities.ConjuntoCarrinho
 {
     public class Carrinho : Entity
     {
-        public int UsuarioId { get; set; }
+        public Cliente Cliente { get; set; }
         public IEnumerable<ProdutoCarrinho> ProdutoCarrinho { get; set; }
     }
 }
