@@ -1,13 +1,18 @@
-﻿using AspStore.Entities.ValueObjects;
+﻿using AspStore.Domain.Emuns;
+using AspStore.Entities.ValueObjects;
 
 namespace AspStore.Domain.Entities.ConjuntoPedido
 {
-    public class Endereco
+    public class Endereco : Entity
     {
-        public string NomeRecebidor { get; set; }
-        public string NomeRua { get; set; }
-        public int NumeroCasa { get; set; }
-        public string PontoReferencia { get; set; }
+        public int ClienteId { get; set; }
+        public TipoEnderecoEnum TipoEndereco { get; set; }
+        public string Logradouro { get; set; }
+        public int Numero { get; set; }
+        public string Bairro { get; set; }
+        public string Complemento { get; set; }
+        public string Cidade { get; set; }
+        public string Estado { get; set; }
         public CEP CEP { get; set; }
     }
 }
