@@ -1,6 +1,6 @@
 ﻿using AspStore.Entities.ValueObjects;
 
-namespace AspStore.Entities.Pedido
+namespace AspStore.Domain.Entities.ConjuntoPedido
 {
     public class Endereco
     {

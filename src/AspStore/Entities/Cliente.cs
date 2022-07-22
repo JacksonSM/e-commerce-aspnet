@@ -1,5 +1,5 @@
 ﻿using AspStore.Domain.Entities;
-using AspStore.Entities.Pedido;
+using AspStore.Domain.Entities.ConjuntoPedido;
 using AspStore.Entities.ValueObjects;
 using System.Collections.Generic;
 
