@@ -7,5 +7,6 @@ namespace AspStore.Domain.Entities.ConjuntoCarrinho
     {
         public Cliente Cliente { get; set; }
         public IEnumerable<ProdutoCarrinho> ProdutoCarrinho { get; set; }
+        public Carrinho() { }
     }
 }
