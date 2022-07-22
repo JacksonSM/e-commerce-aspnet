@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspStore.WebUI", "AspStore.WebUI\AspStore.WebUI.csproj", "{20C5D70C-98F6-469A-9B5E-4C07CF969612}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspStore.Domain", "AspStore\AspStore.Domain.csproj", "{0CCDDD2A-FD9D-47F1-A0D6-DD5013A7792E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspStore.Domain", "AspStore.Domain\AspStore.Domain.csproj", "{0CCDDD2A-FD9D-47F1-A0D6-DD5013A7792E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspStore.Infra.Data", "AspStore.Infra.Data\AspStore.Infra.Data.csproj", "{034D35E3-EB24-45E6-85C7-67F695F0CB49}"
 EndProject
