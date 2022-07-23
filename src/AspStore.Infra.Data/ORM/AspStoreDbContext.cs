@@ -3,6 +3,7 @@ using AspStore.Domain.Entities.ConjuntoCarrinho;
 using AspStore.Domain.Entities.ConjuntoPedido;
 using AspStore.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace AspStore.Infra.Data.ORM
 {
@@ -22,9 +23,12 @@ namespace AspStore.Infra.Data.ORM
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+                relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AspStoreDbContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

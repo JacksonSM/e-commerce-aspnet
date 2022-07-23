@@ -2,6 +2,6 @@
 {
     public class CPF
     {
-        public int NumeroCPF { get; set; }
+        public string NumeroCPF { get; set; }
     }
 }
