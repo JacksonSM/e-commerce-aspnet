@@ -17,7 +17,8 @@ namespace AspStore.Infra.Data.EntitiesMap
             builder.Property(p => p.Quantidade)
                    .IsRequired();
 
-            builder.HasOne(r => r.Produto).WithOne();
+            builder.HasOne(r => r.Produto).WithOne().HasForeignKey<ProdutoPedido>(f => f.ProdutoId);
+            
 
 
         }

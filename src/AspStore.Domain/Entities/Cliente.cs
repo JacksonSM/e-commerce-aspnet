@@ -13,6 +13,6 @@ namespace AspStore.Entities
         public Carrinho Carrinho { get; private set; }
         public IEnumerable<Endereco> Endereco { get; set; }
         public IEnumerable<Pedido> Pedido { get; set; }
-
+        public Cliente(){ }
     }
 }

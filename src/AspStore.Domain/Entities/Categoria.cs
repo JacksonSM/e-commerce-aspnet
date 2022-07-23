@@ -7,5 +7,6 @@ namespace AspStore.Entities
     {
         public string Nome { get; set; }
         public IEnumerable<Produto> Produto { get; set; }
+        public Categoria() { }
     }
 }

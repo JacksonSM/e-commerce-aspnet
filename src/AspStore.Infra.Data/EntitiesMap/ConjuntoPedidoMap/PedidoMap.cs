@@ -19,7 +19,9 @@ namespace AspStore.Infra.Data.EntitiesMap
 
             builder.HasOne(r => r.Cliente).WithMany(r => r.Pedido).HasForeignKey(f => f.ClienteId);
 
-            builder.HasOne(r => r.Endereco).WithOne();
+            builder.HasOne(r => r.Endereco).WithOne().HasForeignKey<Pedido>(f => f.EnderecoId);
+
+            builder.HasMany(r => r.ProdutoPedido).WithOne().HasForeignKey(f => f.PedidoId);
         }
     }
 }

@@ -14,5 +14,6 @@ namespace AspStore.Domain.Entities.ConjuntoPedido
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public CEP CEP { get; set; }
+        public Endereco() { }
     }
 }

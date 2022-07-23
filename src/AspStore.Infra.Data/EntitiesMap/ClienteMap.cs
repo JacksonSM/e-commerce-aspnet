@@ -17,6 +17,7 @@ namespace AspStore.Infra.Data.EntitiesMap
 
             builder.OwnsOne(p => p.CPF)
                    .Property(p => p.NumeroCPF)
+                   .HasMaxLength(12)
                    .IsRequired();
 
             builder.HasMany(r => r.Endereco).WithOne().HasForeignKey(r => r.ClienteId);

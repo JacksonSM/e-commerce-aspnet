@@ -15,8 +15,10 @@ namespace AspStore.Domain.Entities.ConjuntoPedido
 
         public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
+        public int EnderecoId { get; set; }
         public Endereco Endereco { get; set; }
 
-        public IEnumerable<Carrinho> Carrinho { get; set; }
+        public IEnumerable<ProdutoPedido> ProdutoPedido { get; set; }
+        public Pedido() { }
     }
 }

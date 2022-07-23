@@ -18,7 +18,9 @@ namespace AspStore.Infra.Data.EntitiesMap
                    .HasPrecision(10, 2)
                    .IsRequired();
 
-            builder.HasOne(r => r.Produto).WithOne();
+            builder.HasOne(r => r.Produto).WithOne().HasForeignKey<ProdutoCarrinho>(f => f.ProdutoId);
+
+            builder.HasOne(r => r.Carrinho).WithMany(r => r.ProdutoCarrinho).HasForeignKey(f => f.CarrinhoId);
         }
     }
 }
