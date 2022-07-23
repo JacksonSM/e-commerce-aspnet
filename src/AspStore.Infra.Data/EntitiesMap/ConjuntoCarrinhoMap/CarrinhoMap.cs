@@ -13,7 +13,7 @@ namespace AspStore.Infra.Data.EntitiesMap
             builder.Property(p => p.ProdutoCarrinho)
                    .IsRequired(false);
 
-            builder.HasOne(r => r.Cliente).WithOne(r => r.Carrinho);
+            builder.HasOne(r => r.Cliente).WithOne(r => r.Carrinho).HasForeignKey<Carrinho>(f => f.ClienteId);
 
             builder.HasMany(r => r.ProdutoCarrinho).WithOne().HasForeignKey(r => r.CarrinhoId);
         }
