@@ -2,7 +2,7 @@
 
 namespace AspStore.Domain.Interfaces.Repository.ConjuntoCarrinho
 {
-    public interface IProdutoCarrinhoRepository : IGenericRepository<ProdutoCarrinho>
+    public interface IProdutoCarrinhoRepository : IGenericRepository<Carrinho>
     {
 
     }

@@ -13,5 +13,8 @@ namespace AspStore.Domain.Interfaces.Repository
         Task Atualizar(T obj);
         Task Excluir(T obj);
         Task ExcluirPorId(int id);
+
+        Task<int> SaveAsync();
+        int Save();
     }
 }
