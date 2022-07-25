@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AspStore.Infra.Data.Repository
 {
-    class CategoriaRepository : GenericRepository<Categoria>, ICategoriaRepository
+    public class CategoriaRepository : GenericRepository<Categoria>, ICategoriaRepository
     {
         public CategoriaRepository(AspStoreDbContext context): base (context)
         {
