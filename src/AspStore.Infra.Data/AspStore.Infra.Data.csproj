@@ -21,4 +21,9 @@
     <ProjectReference Include="..\AspStore.Domain\AspStore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repository\ConjuntoCarrinho\" />
+    <Folder Include="Repository\ConjuntoPedido\" />
+  </ItemGroup>
+
 </Project>
