@@ -2,7 +2,7 @@
 
 namespace AspStore.Domain.Interfaces.Repository.ConjuntoPedido
 {
-    interface IEnderecoRepository : IGenericRepository<Endereco>
+    public interface IEnderecoRepository : IGenericRepository<Endereco>
     {
     }
 }
