@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AspStore.CrossCutting\AspStore.CrossCutting.csproj" />
     <ProjectReference Include="..\AspStore.Infra.Data\AspStore.Infra.Data.csproj" />
   </ItemGroup>
 
