@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspStore.Domain", "AspStore
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspStore.Infra.Data", "AspStore.Infra.Data\AspStore.Infra.Data.csproj", "{034D35E3-EB24-45E6-85C7-67F695F0CB49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspStore.CrossCutting", "AspStore.CrossCutting\AspStore.CrossCutting.csproj", "{7AE86F6F-F3FB-4936-A0F0-A05ED68B4BA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspStore.CrossCutting", "AspStore.CrossCutting\AspStore.CrossCutting.csproj", "{7AE86F6F-F3FB-4936-A0F0-A05ED68B4BA5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspStore.Application", "AspStore.Application\AspStore.Application.csproj", "{418707A3-8F8E-40D8-BA43-AF3D0BB4EB9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7AE86F6F-F3FB-4936-A0F0-A05ED68B4BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AE86F6F-F3FB-4936-A0F0-A05ED68B4BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AE86F6F-F3FB-4936-A0F0-A05ED68B4BA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{418707A3-8F8E-40D8-BA43-AF3D0BB4EB9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{418707A3-8F8E-40D8-BA43-AF3D0BB4EB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{418707A3-8F8E-40D8-BA43-AF3D0BB4EB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{418707A3-8F8E-40D8-BA43-AF3D0BB4EB9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

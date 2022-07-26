@@ -1,6 +1,4 @@
-﻿using AspStore.Domain.Entities;
-
-namespace AspStore.Domain.Entities.ConjuntoPedido
+﻿namespace AspStore.Domain.Entities.ConjuntoPedido
 {
     public class ProdutoPedido : Entity
     {

@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 
+
 namespace AspStore.WebUI
 {
     public class Startup
@@ -20,10 +21,13 @@ namespace AspStore.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapperService();
+
             services.AddRepositoryServices();
             services.AddDbContextService(Configuration);
-
+            
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
