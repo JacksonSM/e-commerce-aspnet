@@ -17,20 +17,20 @@ namespace AspStore.Domain.Services.ConjutoCarrinho
             _repo = repo;
         }
 
-        public async Task Adicionar(Carrinho obj)
+        public async Task Adicionar(ProdutoCarrinho obj)
         {
 
 
             await _repo.Adicionar(obj);
         }
 
-        public async Task Atualizar(Carrinho obj)
+        public async Task Atualizar(ProdutoCarrinho obj)
         {
 
             await _repo.Atualizar(obj);
         }
 
-        public async Task Excluir(Carrinho obj)
+        public async Task Excluir(ProdutoCarrinho obj)
         {
 
 
@@ -55,12 +55,12 @@ namespace AspStore.Domain.Services.ConjutoCarrinho
 
 
 
-        public async Task<Carrinho> SelecionarPorId(int id)
+        public async Task<ProdutoCarrinho> SelecionarPorId(int id)
         {
             return await _repo.SelecionarPorId(id);
         }
 
-        public async Task<IEnumerable<Carrinho>> SelecionarTodos(Expression<Func<Carrinho, bool>> quando = null)
+        public async Task<IEnumerable<ProdutoCarrinho>> SelecionarTodos(Expression<Func<ProdutoCarrinho, bool>> quando = null)
         {
             return await _repo.SelecionarTodos(quando);
         }

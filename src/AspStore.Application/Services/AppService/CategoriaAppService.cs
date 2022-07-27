@@ -24,7 +24,7 @@ namespace AspStore.Application.Services
         public async Task Adicionar(CategoriaViewModel categoriaVM)
         {
 
-           await  _service.Adicionar(_mapper.Map<Categoria>(categoriaVM));
+            await _service.Adicionar(_mapper.Map<Categoria>(categoriaVM));
         }
 
         public async Task Atualizar(CategoriaViewModel categoriaVM)
@@ -42,6 +42,11 @@ namespace AspStore.Application.Services
             await _service.ExcluirPorId(id);
         }
 
+        public async Task<CategoriaViewModel> ObterCategoriaComProdutos(int CategoriaId)
+        {
+            return _mapper.Map<CategoriaViewModel>(await _service.ObterCategoriaComProdutos(CategoriaId));
+        }
+
         public int Save()
         {
             return _service.Save();
@@ -49,17 +54,20 @@ namespace AspStore.Application.Services
 
         public async Task<int> SaveAsync()
         {
-            return await  _service.SaveAsync();
+            return await _service.SaveAsync();
         }
 
-        public async Task<ProdutoViewModel> SelecionarPorId(int id)
+        public async Task<CategoriaViewModel> SelecionarPorId(int id)
         {
-            return _mapper.Map<ProdutoViewModel>(await _service.SelecionarPorId(id));
+            return _mapper.Map<CategoriaViewModel>(await _service.SelecionarPorId(id));
         }
 
-        public async Task<IEnumerable<ProdutoViewModel>> SelecionarTodos(Expression<Func<Categoria, bool>> quando = null)
+        public async Task<IEnumerable<CategoriaViewModel>> SelecionarTodos(Expression<Func<Categoria, bool>> quando = null)
         {
-            return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _service.SelecionarTodos(quando));
+            return _mapper.Map<IEnumerable<CategoriaViewModel>>(await _service.SelecionarTodos(quando));
         }
+
+
     }
 }
+

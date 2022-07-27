@@ -12,11 +12,4 @@
     <ProjectReference Include="..\AspStore.Domain\AspStore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\AppService\ConjutoCarrinho\" />
-    <Folder Include="Interfaces\AppService\ConjutoPedido\" />
-    <Folder Include="Services\AppService\ConjutoCarrinho\" />
-    <Folder Include="Services\AppService\ConjutoPedido\" />
-  </ItemGroup>
-
 </Project>

@@ -1,25 +1,12 @@
-﻿using AspStore.Application.ViewModels;
-using AspStore.Application.ViewModels.ConjutoCarrinho;
+﻿using AspStore.Application.ViewModels.ConjutoCarrinho;
+using AspStore.Domain.Entities;
 using AspStore.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace AspStore.Application.Interfaces.AppService
 {
-    public interface ICategoriaAppService
+    public interface ICategoriaAppService : IGenericAppService<CategoriaViewModel, Categoria>
     {
-        Task Adicionar(CategoriaViewModel categoriaVM);
-        Task Atualizar(CategoriaViewModel categoriaVM);
-        Task Excluir(CategoriaViewModel categoriaVM);
-
-        Task<IEnumerable<ProdutoViewModel>> SelecionarTodos(Expression<Func<Categoria, bool>> quando = null);
-        Task<ProdutoViewModel> SelecionarPorId(int id);
-        Task ExcluirPorId(int id);
-
-
-        Task<int> SaveAsync();
-        int Save();
+        Task<CategoriaViewModel> ObterCategoriaComProdutos(int CategoriaId);
     }
 }

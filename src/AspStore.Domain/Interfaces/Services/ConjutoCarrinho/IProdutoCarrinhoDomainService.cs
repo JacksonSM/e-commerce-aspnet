@@ -2,7 +2,7 @@
 
 namespace AspStore.Domain.Interfaces.Services.ConjutoCarrinho
 {
-    public interface IProdutoCarrinhoDomainService : IGenericDomainService<Carrinho>
+    public interface IProdutoCarrinhoDomainService : IGenericDomainService<ProdutoCarrinho>
     {
     }
 }
