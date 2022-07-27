@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
+﻿using AspStore.Application.ViewModels.ConjutoCarrinho;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AspStore.Application.ViewModels.ConjutoCarrinho
+namespace AspStore.Application.ViewModels
 {
     public class ProdutoViewModel
     {

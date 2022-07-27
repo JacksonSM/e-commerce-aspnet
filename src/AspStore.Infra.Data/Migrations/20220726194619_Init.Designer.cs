@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspStore.Infra.Data.Migrations
 {
     [DbContext(typeof(AspStoreDbContext))]
-    [Migration("20220723195433_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20220726194619_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -285,6 +285,12 @@ namespace AspStore.Infra.Data.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int")
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Cidade")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Estado")
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<int>("Numero")
                                 .HasColumnType("int");

@@ -22,7 +22,7 @@ namespace AspStore.Infra.Data.Repository
 
         public virtual async Task Adicionar(T obj)
         {
-            _context.Entry(obj).State = EntityState.Added;
+            _context.Set<T>().Add(obj);
         }
 
         public virtual async Task Atualizar(T obj)

@@ -284,6 +284,12 @@ namespace AspStore.Infra.Data.Migrations
                                 .HasColumnType("int")
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                            b1.Property<string>("Cidade")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Estado")
+                                .HasColumnType("nvarchar(max)");
+
                             b1.Property<int>("Numero")
                                 .HasColumnType("int");
 

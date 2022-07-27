@@ -1,6 +1,4 @@
-﻿using AspStore.Application.ViewModels.ConjutoCarrinho;
-
-namespace AspStore.Application.ViewModels.ConjutoPedido
+﻿namespace AspStore.Application.ViewModels.ConjutoPedido
 {
     public class ProdutoPedidoViewModel
     {

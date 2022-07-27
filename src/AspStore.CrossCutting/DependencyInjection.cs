@@ -24,6 +24,7 @@ namespace AspStore.CrossCutting
 
             services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<IProdutoPedidoRepository, ProdutoPedidoRepository>();
+            services.AddScoped<IProdutoPedidoRepository, ProdutoPedidoRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 
 

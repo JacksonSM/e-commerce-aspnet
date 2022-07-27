@@ -69,5 +69,7 @@ namespace AspStore.Domain.Services
         {
             return await _repo.ObterCategoriaComProdutos(CategoriaId);
         }
+
+      
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspStore.Infra.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -89,7 +89,9 @@ namespace AspStore.Infra.Data.Migrations
                     Complemento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cidade = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Estado = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CEP_Numero = table.Column<int>(type: "int", nullable: true)
+                    CEP_Numero = table.Column<int>(type: "int", nullable: true),
+                    CEP_Cidade = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CEP_Estado = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
