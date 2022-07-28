@@ -27,6 +27,11 @@ namespace AspStore.Application.Services
            await _proService.Adicionar(pro);
         }
 
+        public async Task AdicionarImagem(ImagemViewModel imagemVM)
+        {
+            await _proService.AdicionarImagem(_mapper.Map<Imagem>(imagemVM));
+        }
+
         public async Task Atualizar(ProdutoViewModel produto)
         {
            await _proService.Atualizar(_mapper.Map<Produto>(produto));
