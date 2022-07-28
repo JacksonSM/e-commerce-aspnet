@@ -1,4 +1,5 @@
 ﻿using AspStore.Entities;
+using System.Collections.Generic;
 
 namespace AspStore.Domain.Entities
 {
@@ -9,6 +10,8 @@ namespace AspStore.Domain.Entities
         public int Estoque { get; set; }
         public int CategoriaId { get; set; }
         public virtual Categoria Categoria { get; set; }
+
+        public IEnumerable<Imagem> Imagem { get; set; }
 
         public Produto(){}
     }

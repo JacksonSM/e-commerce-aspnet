@@ -18,7 +18,8 @@ namespace AspStore.Infra.Data.ORM
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<ProdutoPedido> ProdutoPedido { get; set; }
         public DbSet<Carrinho> Carrinho { get; set; }
-        public DbSet<Carrinho> ProdutoCarrinho { get; set; }
+        public DbSet<ProdutoCarrinho> ProdutoCarrinho { get; set; }
+        public DbSet<Imagem> Imagem { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
