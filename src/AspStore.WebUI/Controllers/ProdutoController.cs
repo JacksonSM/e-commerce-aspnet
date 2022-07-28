@@ -1,7 +1,6 @@
 ﻿using AspStore.Application.Interfaces.AppService;
-using AspStore.Application.ViewModels;
-using AspStore.BackOffice.WebUI.Infra;
-using AspStore.BackOffice.WebUI.Models;
+using AspStore.WebUI.Infra;
+using AspStore.WebUI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -54,10 +53,10 @@ namespace AspStore.BackOffice.WebUI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _unitOfUpload.UploadImage(file);
+                    //_unitOfUpload.UploadImage(file);
 
-                    var imag = produtoImagemModel.ImagemModel;
-                    imag.Nome = file != null ? file.FileName : "";
+                    //var imag = produtoImagemModel.ImagemModel;
+                    //imag.Nome = file != null ? file.FileName : "";
 
                     await _serviceProduto.Adicionar(produtoImagemModel.ProdutoVM);
                     await _serviceProduto.SaveAsync();

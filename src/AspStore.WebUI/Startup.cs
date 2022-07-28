@@ -1,4 +1,5 @@
 using AspStore.CrossCutting;
+using AspStore.WebUI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,11 +22,13 @@ namespace AspStore.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapperService();
+            services.AddTransient<IUnitOfUpload, UnitOfUpload>();
 
-            services.AddRepositoryServices();
             services.AddDbContextService(Configuration);
-            
+            services.AddAutoMapperService();
+            services.AddRepositoryServices();
+            services.AddDomainService();
+            services.AddAppService();
             services.AddControllersWithViews();
 
         }

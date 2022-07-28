@@ -1,7 +1,7 @@
 ﻿using AspStore.Application.ViewModels;
 using AspStore.Domain.Entities;
 
-namespace AspStore.BackOffice.WebUI.Models
+namespace AspStore.WebUI.Models
 {
     public class ProdutoImagemModel
     {

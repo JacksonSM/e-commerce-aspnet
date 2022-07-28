@@ -1,4 +1,4 @@
-﻿namespace AspStore.BackOffice.WebUI.Models
+﻿namespace AspStore.WebUI.Models
 {
     public class ImagemModel
     {

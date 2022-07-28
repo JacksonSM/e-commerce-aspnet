@@ -1,3 +1,4 @@
+using AspStore.BackOffice.WebUI.Infra;
 using AspStore.CrossCutting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,8 @@ namespace AspStore.BackOffice.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IUnitOfUpload, UnitOfUpload>();
+
             services.AddDbContextService(Configuration);
             services.AddAutoMapperService();
             services.AddRepositoryServices();
