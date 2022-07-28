@@ -1,0 +1,66 @@
+﻿@model ProdutoImagemModel
+
+@{
+    ViewData["Title"] = "Adicionar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.ProdutoVM.Nome" class="control-label"></label>
+                <input asp-for="@Model.ProdutoVM.Nome" class="form-control" />
+                <span asp-validation-for="@Model.ProdutoVM.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ProdutoVM.Preco" class="control-label"></label>
+                <input asp-for="@Model.ProdutoVM.Preco" class="form-control" />
+                <span asp-validation-for="@Model.ProdutoVM.Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ProdutoVM.Estoque" class="control-label"></label>
+                <input asp-for="@Model.ProdutoVM.Estoque" class="form-control" />
+                <span asp-validation-for="@Model.ProdutoVM.Estoque" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ProdutoVM.CategoriaId" class="control-label"></label>
+                <select asp-for="@Model.ProdutoVM.CategoriaId" asp-items="@ViewBag.Categorias" class="form-control">
+                    <option value="">--- Categoria ---</option>
+                </select>
+                <span asp-validation-for="@Model.ProdutoVM.CategoriaId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                <input type="file" name="file" class="form-control" placeholder="Selecione uma foto..." />
+                <span asp-validation-for="@Model.ImagemModel.Caminho" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="@Model.ImagemModel.Principal" /> Foto Principal ?
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para a lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

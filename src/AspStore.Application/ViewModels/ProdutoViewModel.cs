@@ -19,6 +19,8 @@ namespace AspStore.Application.ViewModels
         [Required(ErrorMessage = "Campo {0} é requerido.")]
         public int Estoque { get; set; }
 
+        [Required(ErrorMessage = "Campo {0} é requerido.")]
+        [DisplayName(displayName: "Categoria")]
         public int CategoriaId { get; set; }
 
         public virtual CategoriaViewModel Categoria { get; set; }
