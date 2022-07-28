@@ -23,7 +23,7 @@ namespace AspStore.WebUI.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Contato()
         {
             return View();
         }
