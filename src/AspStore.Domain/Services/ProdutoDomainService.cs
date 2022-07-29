@@ -69,5 +69,10 @@ namespace AspStore.Domain.Services
 
             return await _repo.SelecionarTodos(quando);
         }
+
+        public async Task<IEnumerable<Produto>> TodosProdutoComCategoria()
+        {
+            return await _repo.TodosProdutoComCategoria();
+        }
     }
 }

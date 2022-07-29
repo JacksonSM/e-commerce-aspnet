@@ -32,13 +32,8 @@ namespace AspStore.BackOffice.WebUI.Controllers
         [Route("/BackOffice/Produto")]
         public IActionResult Index()
         {
-            //System.Diagnostics.Debug.WriteLine(_gerirImagens.BuscarImagemPrincipalProduto(0));
-            var lis = _gerirImagens.BuscarImagensProduto(0);
-            //foreach (var item in _gerirImagens.BuscarImagensProduto(0))
-            //{
-            //    System.Diagnostics.Debug.WriteLine(item);
-            //}
-            return View();
+            var listProdutos = _serviceProduto.TodosProdutoComCategoria().Result;
+            return View(listProdutos);
         }
 
         // GET: ProdutoController/Details/5

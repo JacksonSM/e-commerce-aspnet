@@ -66,5 +66,11 @@ namespace AspStore.Application.Services
         {
             return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _proService.SelecionarTodos(quando));
         }
+
+        public async Task<IEnumerable<ProdutoViewModel>> TodosProdutoComCategoria()
+        {
+
+            return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _proService.TodosProdutoComCategoria());
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using AspStore.Domain.Entities;
 using AspStore.Domain.Interfaces.Repository;
 using AspStore.Infra.Data.ORM;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,6 +23,11 @@ namespace AspStore.Infra.Data.Repository
                 return _context.Produto.Max(p => p.CodigoInterno) + 1;
             }
             return 0; 
+        }
+
+        public async Task<IEnumerable<Produto>> TodosProdutoComCategoria()
+        {
+            return  _context.Produto.Include(c => c.Categoria).AsNoTracking().AsEnumerable();
         }
     }
 }

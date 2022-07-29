@@ -10,7 +10,7 @@ namespace AspStore.Domain.Entities
         public int CodigoInterno { get; set; }
 
         public int CategoriaId { get; set; }
-        public virtual Categoria Categoria { get; set; }
+        public Categoria Categoria { get; set; }
 
         public Produto(){}
     }
