@@ -1,4 +1,4 @@
-﻿@model ProdutoImagemModel
+﻿@model AspStore.Application.ViewModels.ProdutoViewModel
 
 @{
     ViewData["Title"] = "Adicionar";
@@ -14,40 +14,31 @@
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="@Model.ProdutoVM.Nome" class="control-label"></label>
-                <input asp-for="@Model.ProdutoVM.Nome" class="form-control" />
-                <span asp-validation-for="@Model.ProdutoVM.Nome" class="text-danger"></span>
+                <label asp-for="@Model.Nome" class="control-label"></label>
+                <input asp-for="@Model.Nome" class="form-control" />
+                <span asp-validation-for="@Model.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.ProdutoVM.Preco" class="control-label"></label>
-                <input asp-for="@Model.ProdutoVM.Preco" class="form-control" />
-                <span asp-validation-for="@Model.ProdutoVM.Preco" class="text-danger"></span>
+                <label asp-for="@Model.Preco" class="control-label"></label>
+                <input asp-for="@Model.Preco" class="form-control" />
+                <span asp-validation-for="@Model.Preco" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.ProdutoVM.Estoque" class="control-label"></label>
-                <input asp-for="@Model.ProdutoVM.Estoque" class="form-control" />
-                <span asp-validation-for="@Model.ProdutoVM.Estoque" class="text-danger"></span>
+                <label asp-for="@Model.Estoque" class="control-label"></label>
+                <input asp-for="@Model.Estoque" class="form-control" />
+                <span asp-validation-for="@Model.Estoque" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.ProdutoVM.CategoriaId" class="control-label"></label>
-                <select asp-for="@Model.ProdutoVM.CategoriaId" asp-items="@ViewBag.Categorias" class="form-control">
+                <label asp-for="@Model.CategoriaId" class="control-label"></label>
+                <select asp-for="@Model.CategoriaId" asp-items="@ViewBag.Categorias" class="form-control">
                     <option value="">--- Categoria ---</option>
                 </select>
-                <span asp-validation-for="@Model.ProdutoVM.CategoriaId" class="text-danger"></span>
+                <span asp-validation-for="@Model.CategoriaId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
                 <input type="file" name="file" class="form-control" placeholder="Selecione uma foto..." />
-                <span asp-validation-for="@Model.ImagemVM.Caminho" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="@Model.ImagemVM.Principal" /> Foto Principal ?
-                    </label>
-                </div>
             </div>
 
             <div class="form-group">

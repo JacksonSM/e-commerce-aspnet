@@ -1,6 +1,6 @@
 ﻿using AspStore.Application.Interfaces.AppService;
+using AspStore.Application.ViewModels;
 using AspStore.WebUI.Infra;
-using AspStore.WebUI.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,7 +53,7 @@ namespace AspStore.BackOffice.WebUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("/BackOffice/Produto/create")]
-        public async Task<IActionResult> Create(IFormFile file,ProdutoImagemModel produtoImagemModel)
+        public async Task<IActionResult> Create(IFormFile file,ProdutoViewModel produtoVM)
         {
      
 
@@ -61,7 +61,7 @@ namespace AspStore.BackOffice.WebUI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                     _unitOfUpload.UploadImage(file, "3465");
+                    
                 }
                 return RedirectToAction(nameof(Index));
             }
