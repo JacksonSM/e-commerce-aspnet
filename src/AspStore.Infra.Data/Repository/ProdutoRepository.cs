@@ -1,6 +1,7 @@
 ﻿using AspStore.Domain.Entities;
 using AspStore.Domain.Interfaces.Repository;
 using AspStore.Infra.Data.ORM;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AspStore.Infra.Data.Repository
@@ -12,5 +13,10 @@ namespace AspStore.Infra.Data.Repository
             _context = context;
         }
 
+        public async Task<string> GerarCodigoInterno()
+        {
+            var cod =  _context.Produto.Max(p => p.CodigoInterno)+1;
+            return cod.ToString(); 
+        }
     }
 }

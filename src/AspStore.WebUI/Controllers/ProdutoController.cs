@@ -43,6 +43,7 @@ namespace AspStore.BackOffice.WebUI.Controllers
         // GET: ProdutoController/Create
         [Route("/BackOffice/Produto/create")]
         public async Task<IActionResult> Create()
+        
         {
             ViewBag.Categorias = new SelectList(await _serviceCategoria.SelecionarTodos(), "Id", "Nome");
             return View();
@@ -54,6 +55,8 @@ namespace AspStore.BackOffice.WebUI.Controllers
         [Route("/BackOffice/Produto/create")]
         public async Task<IActionResult> Create(IFormFile file,ProdutoImagemModel produtoImagemModel)
         {
+     
+
             try
             {
                 if (ModelState.IsValid)
