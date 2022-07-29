@@ -25,7 +25,6 @@ namespace AspStore.Application.Mappings
 
             CreateMap<Carrinho, CarrinhoViewModel>().ReverseMap();
             CreateMap<ProdutoCarrinho, ProdutoCarrinhoViewModel>().ReverseMap();
-            CreateMap<Imagem, ImagemViewModel>().ReverseMap();
 
         }
 

@@ -6,6 +6,5 @@ namespace AspStore.Application.Interfaces.AppService
 {
     public interface IProdutoAppService : IGenericAppService<ProdutoViewModel,Produto>
     {
-        Task AdicionarImagem(ImagemViewModel imagemVM);
     }
 }

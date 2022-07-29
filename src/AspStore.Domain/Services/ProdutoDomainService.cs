@@ -25,11 +25,6 @@ namespace AspStore.Domain.Services
              await _repo.Adicionar(obj);
         }
 
-        public async Task AdicionarImagem(Imagem imagem)
-        {
-            await _repo.AdicionarImagem(imagem);
-        }
-
         public async Task Atualizar(Produto obj)
         {
 

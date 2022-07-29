@@ -19,6 +19,9 @@ namespace AspStore.Infra.Data.EntitiesMap
 
             builder.Property(p => p.Estoque)
                    .IsRequired();
+            
+            builder.Property(p => p.CodigoInterno)
+                   .IsRequired();
 
             builder.HasOne(e => e.Categoria).WithMany(e => e.Produto)
             .HasForeignKey(e => e.CategoriaId);

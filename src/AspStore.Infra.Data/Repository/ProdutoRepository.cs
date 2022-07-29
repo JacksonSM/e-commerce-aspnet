@@ -12,9 +12,5 @@ namespace AspStore.Infra.Data.Repository
             _context = context;
         }
 
-        public async Task AdicionarImagem(Imagem imagem)
-        {
-             _context.Imagem.Add(imagem);
-        }
     }
 }
