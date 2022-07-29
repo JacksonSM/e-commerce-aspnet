@@ -11,26 +11,33 @@ namespace AspStore.BackOffice.WebUI.Controllers
 {
     public class ProdutoController : Controller
     {
-        private readonly IUnitOfUpload _unitOfUpload;
+        private readonly IGerenciadorImagens _gerirImagens;
 
         private readonly IProdutoAppService _serviceProduto;
         private readonly ICategoriaAppService _serviceCategoria;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProdutoController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria, IUnitOfUpload unitOfUpload, IWebHostEnvironment webHostEnvironment)
+        public ProdutoController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria,
+            IGerenciadorImagens gerenciadorImagens, IWebHostEnvironment webHostEnvironment)
         {
             _serviceProduto = serviceProduto;
             _serviceCategoria = serviceCategoria;
-            _unitOfUpload = unitOfUpload;
+            _gerirImagens = gerenciadorImagens;
             _webHostEnvironment = webHostEnvironment;
         }
 
 
 
         // GET: ProdutoController
+        [Route("/BackOffice/Produto")]
         public IActionResult Index()
         {
-            
+            //System.Diagnostics.Debug.WriteLine(_gerirImagens.BuscarImagemPrincipalProduto(0));
+            var lis = _gerirImagens.BuscarImagensProduto(0);
+            //foreach (var item in _gerirImagens.BuscarImagensProduto(0))
+            //{
+            //    System.Diagnostics.Debug.WriteLine(item);
+            //}
             return View();
         }
 
@@ -53,7 +60,8 @@ namespace AspStore.BackOffice.WebUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("/BackOffice/Produto/create")]
-        public async Task<IActionResult> Create(IFormFile file,ProdutoViewModel produtoVM)
+        public async Task<IActionResult> Create(IFormFile imagemPrincipal, IFormFileCollection imagensSegundaria,
+            ProdutoViewModel produtoVM)
         {
      
 
@@ -61,7 +69,17 @@ namespace AspStore.BackOffice.WebUI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    
+                    produtoVM.CodigoInterno =  _serviceProduto.GerarCodigoInterno().Result;
+
+                    await _serviceProduto.Adicionar(produtoVM);
+                    await _serviceProduto.SaveAsync();
+
+                    if (imagemPrincipal is not null) 
+                        _gerirImagens.SalvarImagemPrincipal(imagemPrincipal, produtoVM.CodigoInterno);
+                    if (imagensSegundaria.Count > 0)
+                        _gerirImagens.SalvarImagens(imagensSegundaria, produtoVM.CodigoInterno);
+
+
                 }
                 return RedirectToAction(nameof(Index));
             }

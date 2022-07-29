@@ -5,6 +5,6 @@ namespace AspStore.Domain.Interfaces.Repository
 {
     public interface IProdutoRepository : IGenericRepository<Produto>
     {
-        Task<string> GerarCodigoInterno(); 
+        Task<int> GerarCodigoInterno(); 
     }
 }

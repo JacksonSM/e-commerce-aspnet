@@ -42,7 +42,7 @@ namespace AspStore.Application.Services
              await _proService.ExcluirPorId(id);
         }
 
-        public Task<string> GerarCodigoInterno()
+        public Task<int> GerarCodigoInterno()
         {
             return _proService.GerarCodigoInterno();
         }

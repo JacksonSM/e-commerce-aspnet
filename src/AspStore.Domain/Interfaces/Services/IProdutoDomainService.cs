@@ -5,6 +5,6 @@ namespace AspStore.Domain.Interfaces.Services
 {
     public interface IProdutoDomainService : IGenericDomainService <Produto>
     {
-        Task<string> GerarCodigoInterno();
+        Task<int> GerarCodigoInterno();
     }
 }

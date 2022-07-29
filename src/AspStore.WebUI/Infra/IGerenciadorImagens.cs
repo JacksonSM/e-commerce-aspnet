@@ -1,0 +1,12 @@
+﻿using Microsoft.AspNetCore.Http;
+
+namespace AspStore.WebUI.Infra
+{
+    public interface IGerenciadorImagens
+    {
+        void SalvarImagemPrincipal(IFormFile imagem, int produtoCodigoInterno);
+        void SalvarImagens(IFormFileCollection imagens, int produtoCodigoInterno);
+        string[] BuscarImagensProduto(int produtoCodigoInterno);
+        string BuscarImagemPrincipalProduto(int produtoCodigoInterno);
+    }
+}

@@ -23,6 +23,7 @@ namespace AspStore.Application.ViewModels
         [Required(ErrorMessage = "Campo {0} é requerido.")]
         [DisplayName(displayName: "Categoria")]
         public int CategoriaId { get; set; }
+        public int CodigoInterno { get; set; }
 
         public virtual CategoriaViewModel Categoria { get; set; }
     }

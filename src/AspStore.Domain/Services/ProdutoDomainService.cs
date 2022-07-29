@@ -44,7 +44,7 @@ namespace AspStore.Domain.Services
             await _repo.ExcluirPorId(id);
         }
 
-        public Task<string> GerarCodigoInterno()
+        public Task<int> GerarCodigoInterno()
         {
             return _repo.GerarCodigoInterno();
         }

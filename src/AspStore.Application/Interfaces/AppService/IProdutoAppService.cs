@@ -6,6 +6,6 @@ namespace AspStore.Application.Interfaces.AppService
 {
     public interface IProdutoAppService : IGenericAppService<ProdutoViewModel,Produto>
     {
-        Task<string> GerarCodigoInterno();
+        Task<int> GerarCodigoInterno();
     }
 }

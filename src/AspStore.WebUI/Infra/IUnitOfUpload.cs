@@ -5,6 +5,6 @@ namespace AspStore.WebUI.Infra
 {
     public interface IUnitOfUpload
     {
-       void UploadImage(IFormFile file, string codigo);
+       void UploadImage(IFormFile file, string nomeImagem);
     }
 }

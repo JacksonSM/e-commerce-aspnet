@@ -13,10 +13,14 @@ namespace AspStore.Infra.Data.Repository
             _context = context;
         }
 
-        public async Task<string> GerarCodigoInterno()
+        public async Task<int> GerarCodigoInterno()
         {
-            var cod =  _context.Produto.Max(p => p.CodigoInterno)+1;
-            return cod.ToString(); 
+            
+            if ( _context.Produto.Count() > 0)
+            {
+                return _context.Produto.Max(p => p.CodigoInterno) + 1;
+            }
+            return 0; 
         }
     }
 }

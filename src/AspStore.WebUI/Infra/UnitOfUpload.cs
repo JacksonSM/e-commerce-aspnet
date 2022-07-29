@@ -27,7 +27,7 @@ namespace AspStore.WebUI.Infra
 
             fileName = fileName.Contains("\\") ? fileName.Substring(fileName.LastIndexOf("\\") + 1) : fileName;
 
-            byte[] buffer = new byte[3 * 1024];
+            byte[] buffer = new byte[2048 * 1024];
             using (FileStream output = File.Create(ObterCaminhoMaisNomeDoArquivo(fileName)))
             {
                 using (Stream input = file.OpenReadStream())
