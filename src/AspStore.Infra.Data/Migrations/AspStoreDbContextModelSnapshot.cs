@@ -189,13 +189,8 @@ namespace AspStore.Infra.Data.Migrations
 
                     b.Property<string>("Caminho")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("Principal")
                         .HasColumnType("bit");
@@ -203,14 +198,9 @@ namespace AspStore.Infra.Data.Migrations
                     b.Property<int>("ProdutoId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProdutoId1")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProdutoId");
-
-                    b.HasIndex("ProdutoId1");
 
                     b.ToTable("Imagem");
                 });
@@ -374,13 +364,9 @@ namespace AspStore.Infra.Data.Migrations
             modelBuilder.Entity("AspStore.Domain.Entities.Imagem", b =>
                 {
                     b.HasOne("AspStore.Domain.Entities.Produto", "Produto")
-                        .WithMany()
+                        .WithMany("Imagem")
                         .HasForeignKey("ProdutoId")
                         .IsRequired();
-
-                    b.HasOne("AspStore.Domain.Entities.Produto", null)
-                        .WithMany("Imagem")
-                        .HasForeignKey("ProdutoId1");
 
                     b.Navigation("Produto");
                 });

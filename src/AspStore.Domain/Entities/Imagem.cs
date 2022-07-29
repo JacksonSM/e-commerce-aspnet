@@ -2,7 +2,6 @@
 {
     public class Imagem : Entity
     {
-        public string Nome { get; set; }
         public string Caminho { get; set; }
         public bool Principal { get; set; }
 

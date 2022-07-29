@@ -105,6 +105,27 @@ namespace AspStore.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Imagem",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Caminho = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Principal = table.Column<bool>(type: "bit", nullable: false),
+                    ProdutoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Imagem", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Imagem_Produto_ProdutoId",
+                        column: x => x.ProdutoId,
+                        principalTable: "Produto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProdutoCarrinho",
                 columns: table => new
                 {
@@ -202,6 +223,11 @@ namespace AspStore.Infra.Data.Migrations
                 column: "ClienteId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Imagem_ProdutoId",
+                table: "Imagem",
+                column: "ProdutoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Pedido_ClienteId",
                 table: "Pedido",
                 column: "ClienteId");
@@ -242,6 +268,9 @@ namespace AspStore.Infra.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Imagem");
+
             migrationBuilder.DropTable(
                 name: "ProdutoCarrinho");
 

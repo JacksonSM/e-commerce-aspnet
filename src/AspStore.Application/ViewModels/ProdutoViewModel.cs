@@ -6,6 +6,7 @@ namespace AspStore.Application.ViewModels
 {
     public class ProdutoViewModel
     {
+        public int Id { get; set; }
         [DisplayName(displayName: "Nome")]
         [Required(ErrorMessage = "Campo {0} é requerido.")]
         [StringLength(maximumLength: 50, ErrorMessage = "O campo {0} deve ter entre {2} e {1} caracteres.", MinimumLength = 2)]

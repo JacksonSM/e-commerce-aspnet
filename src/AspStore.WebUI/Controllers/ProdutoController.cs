@@ -1,6 +1,7 @@
 ﻿using AspStore.Application.Interfaces.AppService;
 using AspStore.WebUI.Infra;
 using AspStore.WebUI.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,12 +15,14 @@ namespace AspStore.BackOffice.WebUI.Controllers
 
         private readonly IProdutoAppService _serviceProduto;
         private readonly ICategoriaAppService _serviceCategoria;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProdutoController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria, IUnitOfUpload unitOfUpload)
+        public ProdutoController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria, IUnitOfUpload unitOfUpload, IWebHostEnvironment webHostEnvironment)
         {
             _serviceProduto = serviceProduto;
             _serviceCategoria = serviceCategoria;
             _unitOfUpload = unitOfUpload;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
@@ -38,6 +41,7 @@ namespace AspStore.BackOffice.WebUI.Controllers
         }
 
         // GET: ProdutoController/Create
+        [Route("/BackOffice/Produto/create")]
         public async Task<IActionResult> Create()
         {
             ViewBag.Categorias = new SelectList(await _serviceCategoria.SelecionarTodos(), "Id", "Nome");
@@ -47,24 +51,20 @@ namespace AspStore.BackOffice.WebUI.Controllers
         // POST: ProdutoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("/BackOffice/Produto/create")]
         public async Task<IActionResult> Create(IFormFile file,ProdutoImagemModel produtoImagemModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    //_unitOfUpload.UploadImage(file);
-
-                    //var imag = produtoImagemModel.ImagemModel;
-                    //imag.Nome = file != null ? file.FileName : "";
-
-                    await _serviceProduto.Adicionar(produtoImagemModel.ProdutoVM);
-                    await _serviceProduto.SaveAsync();
+                     _unitOfUpload.UploadImage(file, "3465");
                 }
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (System.Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e);
                 return View();
             }
         }
@@ -110,5 +110,6 @@ namespace AspStore.BackOffice.WebUI.Controllers
                 return View();
             }
         }
+     
     }
 }

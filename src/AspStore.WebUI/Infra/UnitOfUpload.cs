@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace AspStore.WebUI.Infra
 {
@@ -14,10 +15,16 @@ namespace AspStore.WebUI.Infra
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public async void UploadImage(IFormFile file)
+        public async void UploadImage(IFormFile file, string codigo)
         {
             long totalBytes = file.Length;
             string fileName = file.FileName.Trim('"');
+            var extension = Path.GetExtension(fileName);
+            fileName = codigo + extension;
+    
+
+
+
             fileName = fileName.Contains("\\") ? fileName.Substring(fileName.LastIndexOf("\\") + 1) : fileName;
 
             byte[] buffer = new byte[3 * 1024];
@@ -32,11 +39,11 @@ namespace AspStore.WebUI.Infra
                         totalBytes += readBytes;
                     }
                 }
-            }
+            }           
         }
         private string ObterCaminhoMaisNomeDoArquivo(string fileName)
         {
-            string path = _webHostEnvironment.WebRootPath + "\\uploads\\";
+            string path = _webHostEnvironment.WebRootPath + "\\uploads\\imagens_produtos\\";
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
             return path + fileName;

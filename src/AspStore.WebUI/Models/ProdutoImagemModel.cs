@@ -6,6 +6,6 @@ namespace AspStore.WebUI.Models
     public class ProdutoImagemModel
     {
         public ProdutoViewModel ProdutoVM { get; set; }
-        public Imagem ImagemModel { get; set; }
+        public ImagemViewModel ImagemVM { get; set; }
     }
 }

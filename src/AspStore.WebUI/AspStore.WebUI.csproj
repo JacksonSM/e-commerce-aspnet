@@ -20,4 +20,8 @@
     <ProjectReference Include="..\AspStore.Infra.Data\AspStore.Infra.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\imagens_produtos\" />
+  </ItemGroup>
+
 </Project>
