@@ -71,6 +71,8 @@ namespace AspStore.Application.Services
         {
 
             return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _proService.TodosProdutoComCategoria());
+           // var produtos = await _proService.TodosProdutoComCategoria();
+            //return null;
         }
     }
 }
