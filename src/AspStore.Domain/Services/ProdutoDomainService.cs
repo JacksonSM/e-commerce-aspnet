@@ -49,6 +49,11 @@ namespace AspStore.Domain.Services
             return _repo.GerarCodigoInterno();
         }
 
+        public async Task<Produto> ObterProdutoComCategoria(int produtoId)
+        {
+            return await _repo.ObterProdutoComCategoria(produtoId);
+        }
+
         public int Save()
         {
            return _repo.Save();

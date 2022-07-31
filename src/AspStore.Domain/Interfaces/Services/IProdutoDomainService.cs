@@ -8,5 +8,6 @@ namespace AspStore.Domain.Interfaces.Services
     {
         Task<int> GerarCodigoInterno();
         Task<IEnumerable<Produto>> TodosProdutoComCategoria();
+        Task<Produto> ObterProdutoComCategoria(int produtoId);
     }
 }

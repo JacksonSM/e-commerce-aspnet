@@ -25,6 +25,12 @@ namespace AspStore.Infra.Data.Repository
             return 0; 
         }
 
+        public Task<Produto> ObterProdutoComCategoria(int produtoId)
+        {
+            return _context.Produto.Include(e => e.Categoria).AsNoTracking().FirstOrDefaultAsync(x => x.Id == produtoId);
+        }
+    
+
         public async Task<IEnumerable<Produto>> TodosProdutoComCategoria()
         {
             return  _context.Produto.Include(c => c.Categoria).AsNoTracking().AsEnumerable();

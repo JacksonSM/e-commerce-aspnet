@@ -1,0 +1,61 @@
+﻿@model AspStore.Application.ViewModels.ProdutoViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutBackOffice.cshtml";
+}
+
+<div>
+    <h4>Detalhe de @Html.DisplayFor(model => model.Nome)</h4>
+    <div>
+        <a asp-route-id="@Model.Id" >Editar</a>
+        <a asp-action="Index">Voltar a lista</a>
+    </div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estoque)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estoque)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoriaId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
+    </dl>
+</div>
+<h3>Imagens do produto</h3>
+<div class="container">
+    <div class="row">
+        @foreach (var item in ViewData["listaImagens"] as Array)
+        {
+            
+            <div class="col-sm">
+                <img src="~/uploads/imagens_produtos/@item" class="rounded float-start">
+            </div>
+        }
+
+
+    </div>
+</div>
+

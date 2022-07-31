@@ -47,6 +47,11 @@ namespace AspStore.Application.Services
             return _proService.GerarCodigoInterno();
         }
 
+        public async Task<ProdutoViewModel> ObterProdutoComCategoria(int produtoId)
+        {
+            return  _mapper.Map<ProdutoViewModel>(await _proService.ObterProdutoComCategoria(produtoId));
+        }
+
         public int Save()
         {
             return _proService.Save();
@@ -69,10 +74,7 @@ namespace AspStore.Application.Services
 
         public async Task<IEnumerable<ProdutoViewModel>> TodosProdutoComCategoria()
         {
-
             return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _proService.TodosProdutoComCategoria());
-           // var produtos = await _proService.TodosProdutoComCategoria();
-            //return null;
         }
     }
 }

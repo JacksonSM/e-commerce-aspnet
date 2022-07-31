@@ -9,5 +9,6 @@ namespace AspStore.Application.Interfaces.AppService
     {
         Task<int> GerarCodigoInterno();
         Task<IEnumerable<ProdutoViewModel>> TodosProdutoComCategoria();
+        Task<ProdutoViewModel> ObterProdutoComCategoria(int produtoId);
     }
 }

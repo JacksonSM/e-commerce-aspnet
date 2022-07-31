@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AspStore.BackOffice.WebUI.Controllers
 {
-    public class ProdutoController : Controller
+    public class ProdutoBOController : Controller
     {
         private readonly IGerenciadorImagens _gerirImagens;
 
@@ -17,7 +17,7 @@ namespace AspStore.BackOffice.WebUI.Controllers
         private readonly ICategoriaAppService _serviceCategoria;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProdutoController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria,
+        public ProdutoBOController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria,
             IGerenciadorImagens gerenciadorImagens, IWebHostEnvironment webHostEnvironment)
         {
             _serviceProduto = serviceProduto;
@@ -28,8 +28,8 @@ namespace AspStore.BackOffice.WebUI.Controllers
 
 
 
-        // GET: ProdutoController
-        [Route("/BackOffice/Produto")]
+
+        [Route("/BackOffice/ProdutoBO")]
         public IActionResult Index()
         {
             var listProdutos = _serviceProduto.TodosProdutoComCategoria().Result;
@@ -37,13 +37,20 @@ namespace AspStore.BackOffice.WebUI.Controllers
         }
 
         // GET: ProdutoController/Details/5
-        public ActionResult Details(int id)
+        [Route("/BackOffice/ProdutoBO/Details")]
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var produtoVM = await _serviceProduto.ObterProdutoComCategoria(id);
+            if (produtoVM is null) return NotFound();
+             
+            ViewData["listaImagens"] =  _gerirImagens.BuscarImagensProduto(produtoVM.CodigoInterno);
+
+
+            return View(produtoVM);
         }
 
         // GET: ProdutoController/Create
-        [Route("/BackOffice/Produto/create")]
+        [Route("/BackOffice/ProdutoBO/create")]
         public async Task<IActionResult> Create()
         
         {
@@ -54,7 +61,7 @@ namespace AspStore.BackOffice.WebUI.Controllers
         // POST: ProdutoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("/BackOffice/Produto/create")]
+        [Route("/BackOffice/ProdutoBO/create")]
         public async Task<IActionResult> Create(IFormFile imagemPrincipal, IFormFileCollection imagensSegundaria,
             ProdutoViewModel produtoVM)
         {

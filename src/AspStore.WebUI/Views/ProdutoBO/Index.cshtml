@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.Categoria.Nome)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-controller="ProdutoBO" asp-action="Edit" asp-route-id="@item.Id"><span class="material-icons" title="Editar Produto">edit</span> </a>
+                <a asp-controller="ProdutoBO" asp-action="Details" asp-route-id="@item.Id"><span class="material-icons" title="Detalhes Produto">info</span> </a>
+                <a asp-controller="ProdutoBO" asp-action="Delete" asp-route-id="@item.Id"><span class="material-icons" title="Excluir Produto">delete</span> </a>
             </td>
         </tr>
 }
