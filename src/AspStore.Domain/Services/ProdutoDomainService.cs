@@ -23,12 +23,14 @@ namespace AspStore.Domain.Services
 
 
              await _repo.Adicionar(obj);
+            await _repo.SaveAsync();
         }
 
         public async Task Atualizar(Produto obj)
         {
 
             await _repo.Atualizar(obj);
+            await _repo.SaveAsync();
         }
 
         public async Task Excluir(Produto obj)
@@ -36,12 +38,14 @@ namespace AspStore.Domain.Services
 
 
             await _repo.Excluir(obj);
+            await _repo.SaveAsync();
         }
 
         public async Task ExcluirPorId(int id)
         {
 
             await _repo.ExcluirPorId(id);
+            await _repo.SaveAsync();
         }
 
         public Task<int> GerarCodigoInterno()

@@ -114,18 +114,23 @@ namespace AspStore.BackOffice.WebUI.Controllers
         }
 
         // GET: ProdutoController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var produtoVM = await _serviceProduto.ObterProdutoComCategoria(id);
+            if (produtoVM is null) return NotFound();
+
+            return View(produtoVM);
         }
 
         // POST: ProdutoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             try
             {
+                await _serviceProduto.ExcluirPorId(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
