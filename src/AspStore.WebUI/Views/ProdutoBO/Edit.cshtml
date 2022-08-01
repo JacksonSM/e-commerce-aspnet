@@ -1,0 +1,77 @@
+﻿@model AspStore.Application.ViewModels.ProdutoViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutBackOffice.cshtml";
+
+}
+
+<h4>Eitar @Model.Nome</h4>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <partial name="_create_edit" model="@Model" />
+
+            <div class="form-group">
+                <label class="control-label">Selecione uma Imagem Principal</label>
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                <input type="file" name="imagemPrincipal" class="form-control" placeholder="Selecione uma Imagem Principal..." />
+
+            </div>
+            <div class="form-group">
+                <label class="control-label">Adicionar as Imagens Segundaria</label>
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                <input type="file" name="imagensSegundaria" class="form-control" multiple placeholder="Selecione as Imagens Segundaria" />
+            </div>
+
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            @if (ViewData["listaImagens"] != null)
+            {
+                @foreach (var item in ViewData["listaImagens"] as string[])
+                {
+            <a href="#" class="thumbnail">
+                @if (!item.Equals($"{item[0]}_principal.png"))
+                {
+                    <a asp-action="ExcluirImagem" asp-route-nomeImagem="@item" asp-route-idProduto="@Model.Id"><span class="material-icons">delete</span></a>
+                    <img src="~/uploads/imagens_produtos/@item" alt="@item">
+                }
+                else
+                {
+                    <h6>Imagen Principal</h6>                
+                    <img src="~/uploads/imagens_produtos/@item" alt="@item">
+                }
+
+
+            </a>
+
+                }
+
+
+
+            }
+            else
+            {<h3>Não existe imagens desse produto !!</h3>}
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -13,28 +13,8 @@
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="@Model.Nome" class="control-label"></label>
-                <input asp-for="@Model.Nome" class="form-control" />
-                <span asp-validation-for="@Model.Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Preco" class="control-label"></label>
-                <input asp-for="@Model.Preco" class="form-control" />
-                <span asp-validation-for="@Model.Preco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Estoque" class="control-label"></label>
-                <input asp-for="@Model.Estoque" class="form-control" />
-                <span asp-validation-for="@Model.Estoque" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.CategoriaId" class="control-label"></label>
-                <select asp-for="@Model.CategoriaId" asp-items="@ViewBag.Categorias" class="form-control">
-                    <option value="">--- Categoria ---</option>
-                </select>
-                <span asp-validation-for="@Model.CategoriaId" class="text-danger"></span>
-            </div>
+
+            <partial name="_create_edit" model="@Model"/>
 
             <div class="form-group">
                 <label class="control-label">Selecione uma Imagem Principal</label>
@@ -42,11 +22,10 @@
                 <input type="file" name="imagemPrincipal" class="form-control" required placeholder="Selecione uma Imagem Principal..." />
             </div>
             <div class="form-group">
-                <label class="control-label">Selecione as Imagens Segundaria</label>
+                <label class="control-label">Adicionar as Imagens Segundaria</label>
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
                 <input type="file" name="imagensSegundaria" class="form-control" multiple required placeholder="Selecione as Imagens Segundaria" />
             </div>
-
             <div class="form-group">
                 <input type="submit" value="Adicionar" class="btn btn-primary" />
             </div>

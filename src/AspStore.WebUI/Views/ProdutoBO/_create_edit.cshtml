@@ -1,0 +1,26 @@
+﻿@model AspStore.Application.ViewModels.ProdutoViewModel
+
+<div class="form-group">
+    <label asp-for="@Model.Nome" class="control-label"></label>
+    <input asp-for="@Model.Nome" class="form-control" />
+    <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="@Model.Preco" class="control-label"></label>
+    <input asp-for="@Model.Preco" class="form-control" />
+    <span asp-validation-for="@Model.Preco" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="@Model.Estoque" class="control-label"></label>
+    <input asp-for="@Model.Estoque" class="form-control" />
+    <span asp-validation-for="@Model.Estoque" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="@Model.CategoriaId" class="control-label"></label>
+    <select asp-for="@Model.CategoriaId" asp-items="@ViewBag.Categorias" class="form-control">
+        <option value="">--- Categoria ---</option>
+    </select>
+    <span asp-validation-for="@Model.CategoriaId" class="text-danger"></span>
+</div>
+
+

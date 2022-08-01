@@ -6,6 +6,7 @@ namespace AspStore.WebUI.Infra
     {
         void SalvarImagemPrincipal(IFormFile imagem, int produtoCodigoInterno);
         void SalvarImagens(IFormFileCollection imagens, int produtoCodigoInterno);
+        void ExcluirImagem(string nomeImagem);
         string[] BuscarImagensProduto(int produtoCodigoInterno);
         string BuscarImagemPrincipalProduto(int produtoCodigoInterno);
     }

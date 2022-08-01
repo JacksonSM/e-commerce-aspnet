@@ -36,7 +36,6 @@ namespace AspStore.BackOffice.WebUI.Controllers
             return View(listProdutos);
         }
 
-        // GET: ProdutoController/Details/5
         [Route("/BackOffice/ProdutoBO/Details")]
         public async Task<IActionResult> Details(int id)
         {
@@ -49,7 +48,6 @@ namespace AspStore.BackOffice.WebUI.Controllers
             return View(produtoVM);
         }
 
-        // GET: ProdutoController/Create
         [Route("/BackOffice/ProdutoBO/create")]
         public async Task<IActionResult> Create()
         
@@ -58,7 +56,6 @@ namespace AspStore.BackOffice.WebUI.Controllers
             return View();
         }
 
-        // POST: ProdutoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("/BackOffice/ProdutoBO/create")]
@@ -92,19 +89,30 @@ namespace AspStore.BackOffice.WebUI.Controllers
             }
         }
 
-        // GET: ProdutoController/Edit/5
-        public ActionResult Edit(int id)
+        [Route("/BackOffice/ProdutoBO/Edit/")]
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var produtoVM = await _serviceProduto.ObterProdutoComCategoria(id);
+            if (produtoVM is null) return NotFound();
+            ViewData["listaImagens"] = _gerirImagens.BuscarImagensProduto(produtoVM.CodigoInterno);
+            ViewBag.Categorias = new SelectList(await _serviceCategoria.SelecionarTodos(), "Id", "Nome");
+
+            return View(produtoVM);
         }
 
-        // POST: ProdutoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [Route("/BackOffice/ProdutoBO/Edit/")]
+        public async Task<ActionResult> Edit(ProdutoViewModel produtoVM,IFormFile imagemPrincipal, IFormFileCollection imagensSegundaria)
         {
             try
             {
+                await _serviceProduto.Atualizar(produtoVM);
+                if (imagemPrincipal is not null)
+                    _gerirImagens.SalvarImagemPrincipal(imagemPrincipal, produtoVM.CodigoInterno);
+                if (imagensSegundaria.Count > 0)
+                    _gerirImagens.SalvarImagens(imagensSegundaria, produtoVM.CodigoInterno);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -113,7 +121,7 @@ namespace AspStore.BackOffice.WebUI.Controllers
             }
         }
 
-        // GET: ProdutoController/Delete/5
+        [Route("/BackOffice/ProdutoBO/Delete/")]
         public async Task<ActionResult> Delete(int id)
         {
             var produtoVM = await _serviceProduto.ObterProdutoComCategoria(id);
@@ -122,10 +130,9 @@ namespace AspStore.BackOffice.WebUI.Controllers
             return View(produtoVM);
         }
 
-        // POST: ProdutoController/Delete/5
-        [HttpPost]
         [ValidateAntiForgeryToken]
         [HttpPost, ActionName("Delete")]
+        [Route("/BackOffice/ProdutoBO/Delete/")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             try
@@ -138,6 +145,13 @@ namespace AspStore.BackOffice.WebUI.Controllers
                 return View();
             }
         }
-     
+        
+        public Task<ActionResult> ExcluirImagem(string nomeImagem, int idProduto)
+        {
+            _gerirImagens.ExcluirImagem(nomeImagem);
+            return Task.FromResult(RedirectToAction("Edit", new { id = idProduto}));
+        }
     }
+
+    
 }

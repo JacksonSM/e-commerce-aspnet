@@ -45,8 +45,15 @@ namespace AspStore.WebUI.Infra
             return null;
         }
 
+        public void ExcluirImagem(string nomeImagem)
+        {
+            var path = Path.Combine(_webHostEnvironment.WebRootPath + $"\\uploads\\imagens_produtos\\{nomeImagem}");
+            File.Delete(path);
+        }
+
         public async void SalvarImagemPrincipal(IFormFile arquivo, int produtoCodigoInterno)
         {
+            ExcluirImagem($"{produtoCodigoInterno}_principal.png");
             var nomeImagem = produtoCodigoInterno + "_principal";
             _upload.UploadImage(arquivo,nomeImagem);
         }

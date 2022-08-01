@@ -7,7 +7,7 @@
 <div>
     <h4>Detalhe de @Html.DisplayFor(model => model.Nome)</h4>
     <div>
-        <a asp-controller="ProdutoBO" asp-action="Edit" asp-route-id="@Model.Id" >Editar</a>
+        <a asp-controller="ProdutoBO" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
         <a asp-action="Index">Voltar a lista</a>
     </div>
     <hr />
@@ -47,15 +47,16 @@
 <h3>Imagens do produto</h3>
 <div class="container">
     <div class="row">
-        @foreach (var item in ViewData["listaImagens"] as Array)
-        {
-            
-            <div class="col-sm">
-                <img src="~/uploads/imagens_produtos/@item" class="rounded float-start">
-            </div>
-        }
+        <div class="col-xs-6 col-md-3">
+            @foreach (var item in ViewData["listaImagens"] as Array)
+            {
 
+                <a href="#" class="thumbnail">
+                    <img src="~/uploads/imagens_produtos/@item" alt="@item">
+                </a>
 
+            }
+        </div>
     </div>
 </div>
 
