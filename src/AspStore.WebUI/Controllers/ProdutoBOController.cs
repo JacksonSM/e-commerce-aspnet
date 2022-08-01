@@ -146,10 +146,10 @@ namespace AspStore.BackOffice.WebUI.Controllers
             }
         }
         
-        public Task<ActionResult> ExcluirImagem(string nomeImagem, int idProduto)
+        public async Task<ActionResult> ExcluirImagem(string nomeImagem, int idProduto)
         {
             _gerirImagens.ExcluirImagem(nomeImagem);
-            return Task.FromResult(RedirectToAction("Edit", new { id = idProduto}));
+            return RedirectToAction("Edit", new { id = idProduto});
         }
     }
 

@@ -1,5 +1,4 @@
-﻿using AspStore.Application.ViewModels.ConjutoCarrinho;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace AspStore.Application.ViewModels

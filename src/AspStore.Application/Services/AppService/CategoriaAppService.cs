@@ -1,6 +1,5 @@
 ﻿using AspStore.Application.Interfaces.AppService;
 using AspStore.Application.ViewModels;
-using AspStore.Application.ViewModels.ConjutoCarrinho;
 using AspStore.Domain.Interfaces.Services;
 using AspStore.Entities;
 using AutoMapper;

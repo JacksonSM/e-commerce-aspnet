@@ -1,4 +1,4 @@
-﻿using AspStore.Application.ViewModels.ConjutoCarrinho;
+﻿using AspStore.Application.ViewModels;
 using AspStore.Domain.Entities;
 using AspStore.Entities;
 using System.Threading.Tasks;
