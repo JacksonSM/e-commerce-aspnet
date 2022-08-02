@@ -1,18 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+    ViewData["Title"] = "Contato";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 
+}
+<!-- banner-2 -->
+<div class="page-head_agile_info_w3l">
+
+</div>
+<!-- //banner-2 -->
 <!-- page -->
 <div class="services-breadcrumb">
     <div class="agile_inner_breadcrumb">
         <div class="container">
             <ul class="w3_short">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a asp-controller="Home" asp-action="Index">Inicio</a>
                     <i>|</i>
                 </li>
-                <li>Contact Us</li>
+                <li>@ViewData["Title"]</li>
             </ul>
         </div>
     </div>
@@ -23,8 +28,7 @@
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-            <span>C</span>ontact
-            <span>U</span>s
+            <span>C</span>ontato          
         </h3>
         <!-- //tittle heading -->
         <div class="row contact-grids agile-1 mb-5">
@@ -33,10 +37,10 @@
                     <div class="con-ic">
                         <i class="fas fa-map-marker-alt rounded-circle"></i>
                     </div>
-                    <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Address</h4>
+                    <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Endereço</h4>
                     <p>
-                        1PO Box 8568954 Melbourne
-                        <label>Australia.</label>
+                        @ViewData["Endereco"]
+                        <label>Brasil.</label>
                     </p>
                 </div>
             </div>
@@ -45,10 +49,9 @@
                     <div class="con-ic">
                         <i class="fas fa-phone rounded-circle"></i>
                     </div>
-                    <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Call Us</h4>
-                    <p>
-                        +(0121) 121 121
-                        <label>+(0121) 121 122</label>
+                    <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Telefone</h4>
+                    <p>                     
+                        <label>@ViewData["Telefone"]</label>
                     </p>
                 </div>
             </div>
@@ -58,34 +61,33 @@
                         <i class="fas fa-envelope-open rounded-circle"></i>
                     </div>
                     <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
-                    <p>
-                        <a href="mailto:info@example.com">info@example1.com</a>
+                    <p>                        
                         <label>
-                            <a href="mailto:info@example.com">info@example2.com</a>
+                            <a href="mailto:@ViewData["Email"]">@ViewData["Email"]</a>
                         </label>
                     </p>
                 </div>
             </div>
         </div>
         <!-- form -->
-        <form action="#" method="post">
+        <form asp-action="EnviarEmail" method="post">
             <div class="contact-grids1 w3agile-6">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 contact-form1 form-group">
-                        <label class="col-form-label">Name</label>
-                        <input type="text" class="form-control" name="Name" placeholder="" required="">
+                        <label class="col-form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome" placeholder="" required="">
                     </div>
                     <div class="col-md-6 col-sm-6 contact-form1 form-group">
                         <label class="col-form-label">E-mail</label>
-                        <input type="email" class="form-control" name="Email" placeholder="" required="">
+                        <input type="email" class="form-control" name="email" placeholder="" required="">
                     </div>
                 </div>
                 <div class="contact-me animated wow slideInUp form-group">
-                    <label class="col-form-label">Message</label>
-                    <textarea name="Message" class="form-control" placeholder="" required=""> </textarea>
+                    <label class="col-form-label">Mensagem</label>
+                    <textarea name="mensagem" class="form-control" placeholder="" required=""> </textarea>
                 </div>
                 <div class="contact-form">
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Enviar">
                 </div>
             </div>
         </form>
@@ -99,4 +101,3 @@
             allowfullscreen></iframe>
 </div>
 <!-- //map -->
-

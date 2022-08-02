@@ -11,11 +11,10 @@ namespace AspStore.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
+           
         }
 
         public IActionResult Index()
@@ -25,13 +24,25 @@ namespace AspStore.WebUI.Controllers
 
         public IActionResult Contato()
         {
+            ViewData["Email"] = "aspstorecontato@gmail.com";
+            ViewData["Telefone"] = "(83) 99859-2563";
+            ViewData["Endereco"] = "Rua Americo, 36";
+
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult SobreNos()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult EnviarEmail(string nome, string email, string mensagem )
+        {
+
+
+            return RedirectToAction(nameof(Contato));
+        }
+        
+
     }
 }
