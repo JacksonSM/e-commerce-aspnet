@@ -1,4 +1,5 @@
-﻿using AspStore.WebUI.Models;
+﻿using AspStore.Application.Interfaces.AppService;
+using AspStore.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,15 +12,19 @@ namespace AspStore.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IProdutoAppService _serviceProduto;
+        private readonly ICategoriaAppService _serviceCategoria;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria)
         {
-           
+            _serviceProduto = serviceProduto;
+            _serviceCategoria = serviceCategoria;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var produtos = await _serviceProduto.SelecionarTodos();
+            return View(produtos);
         }
 
         public IActionResult Contato()
