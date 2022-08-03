@@ -46,25 +46,19 @@
             {
                 @foreach (var item in ViewData["listaImagens"] as string[])
                 {
-            <a href="#" class="thumbnail">
-                @if (!item.Equals($"{item[0]}_principal.png"))
-                {
-                    <a asp-action="ExcluirImagem" asp-route-nomeImagem="@item" asp-route-idProduto="@Model.Id"><span class="material-icons">delete</span></a>
-                    <img src="~/uploads/imagens_produtos/@item" alt="@item">
+                    <a href="#" class="thumbnail">
+                        @if (!item.Equals($"{item[0]}_principal.png"))
+                        {
+                            <a asp-action="ExcluirImagem" asp-route-nomeImagem="@item" asp-route-idProduto="@Model.Id"><span class="material-icons">delete</span></a>
+                            <img src="~/uploads/imagens_produtos/@item" alt="@item">
+                        }
+                        else
+                        {
+                            <h6>Imagen Principal</h6>
+                            <img src="~/uploads/imagens_produtos/@item" alt="@item">
+                        }
+                    </a>
                 }
-                else
-                {
-                    <h6>Imagen Principal</h6>                
-                    <img src="~/uploads/imagens_produtos/@item" alt="@item">
-                }
-
-
-            </a>
-
-                }
-
-
-
             }
             else
             {<h3>Não existe imagens desse produto !!</h3>}
@@ -75,4 +69,15 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        jQuery.extend(jQuery.validator.methods, {
+            date: function (value, element) {
+                return this.optional(element) || /^\d\d?\/\d\d?\/\d\d\d?\d?$/.test(value);
+            },
+            number: function (value, element) {
+                return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:\.\d{3})+)(?:,\d+)?$/.test(value);
+            }
+        });
+    </script>
+
 }

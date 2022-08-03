@@ -1,11 +1,8 @@
 ﻿using AspStore.Application.Interfaces.AppService;
+using AspStore.WebUI.Infra;
 using AspStore.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 
 namespace AspStore.WebUI.Controllers
@@ -14,17 +11,30 @@ namespace AspStore.WebUI.Controllers
     {
         private readonly IProdutoAppService _serviceProduto;
         private readonly ICategoriaAppService _serviceCategoria;
+        private readonly IGerenciadorImagens _gerirImagens;
+        public IndexModel IndexModel { get; set; } = new IndexModel();
 
-        public HomeController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria)
+        public HomeController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria, IGerenciadorImagens gerirImagens)
         {
             _serviceProduto = serviceProduto;
             _serviceCategoria = serviceCategoria;
+            _gerirImagens = gerirImagens;
         }
 
         public async Task<IActionResult> Index()
         {
-            var produtos = await _serviceProduto.SelecionarTodos();
-            return View(produtos);
+            IndexModel.Catalogo.Produtos =  await _serviceProduto.SelecionarTodos();
+            IndexModel.Categorias = await _serviceCategoria.SelecionarTodos();
+            ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");
+            return View(IndexModel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ListarProdutosPorCategoria(int catalogoId)
+        {
+            var va = 1;
+            //var categoria = await _serviceCategoria.ObterCategoriaComProdutos(categoriaId);
+            return View();
         }
 
         public IActionResult Contato()
@@ -46,6 +56,13 @@ namespace AspStore.WebUI.Controllers
 
 
             return RedirectToAction(nameof(Contato));
+        }
+        public async Task<IActionResult> PaginaProduto(int produtoId)
+        {
+            IndexModel.ProdutoVM = await _serviceProduto.ObterProdutoComCategoria(produtoId);
+            ViewData["listaImagens"] = _gerirImagens.BuscarImagensProduto(IndexModel.ProdutoVM.CodigoInterno);
+
+            return View(IndexModel);
         }
 
     }

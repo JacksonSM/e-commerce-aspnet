@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AspStore.Application.ViewModels.ProdutoViewModel>
+﻿@model IndexModel
 <!-- banner -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <!-- Indicators-->
@@ -105,7 +105,7 @@
                     <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">                       
                         <div class="row">
 
-                            @foreach (var produto in @Model)
+                            @foreach (var produto in Model.Catalogo.Produtos)
                             {
                                 <!-- first section -->
 
@@ -115,7 +115,7 @@
                                             <img src="/uploads/imagens_produtos/@(produto.CodigoInterno)_principal.png" height="200" width="200" alt="">
                                             <div class="men-cart-pro">
                                                 <div class="inner-men-cart-pro">
-                                                    <a asp-controller="Produto" asp-action="PaginaProduto" asp-route-produtoId="@produto.Id" class="link-product-add-cart">Ver Mais</a>
+                                                    <a asp-controller="Home" asp-action="PaginaProduto" asp-route-produtoId="@produto.Id" class="link-product-add-cart">Ver Mais</a>
                                                 </div>
                                             </div>
                                         </div>

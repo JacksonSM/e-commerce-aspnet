@@ -1,6 +1,6 @@
-﻿@model AspStore.Application.ViewModels.ProdutoViewModel
+﻿@model IndexModel
 @{
-    var anchor = "<h3>Ola</h3>";
+   
 }
 <!-- banner-2 -->
 <div class="page-head_agile_info_w3l">
@@ -17,10 +17,10 @@
                     <i>|</i>
                 </li>
                 <li>
-                    @Model.Categoria.Nome
+                    @Model.ProdutoVM.Categoria.Nome
                     <i>|</i>
                 </li>
-                <li>@Model.Nome</li>
+                <li>@Model.ProdutoVM.Nome</li>
             </ul>
         </div>
     </div>
@@ -48,9 +48,9 @@
     </div>
 
     <div class="col-lg-7 single-right-left simpleCart_shelfItem">
-        <h3 class="mb-3">@Model.Nome</h3>
+        <h3 class="mb-3">@Model.ProdutoVM.Nome</h3>
         <p class="mb-3">
-            <span class="item_price">@Html.DisplayFor(produto => Model.Preco)</span>
+            <span class="item_price">@Html.DisplayFor(produto => Model.ProdutoVM.Preco)</span>
             <label>Frete Grátis</label>
         </p>
 
@@ -64,7 +64,7 @@
                 </h4>
                 <br />
                 <br />
-                @Model.Descricao
+                @Model.ProdutoVM.Descricao
             </p>
             <p class="my-sm-4 my-3">
                 <i class="fas fa-retweet mr-3"></i>Net banking & Credit/ Debit/ ATM card
@@ -74,7 +74,7 @@
             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                 <form action="#" method="post">
                     <fieldset>
-                        <input type="hidden" name="produtoId" value="@Model.Id" />
+                        <input type="hidden" name="produtoId" value="@Model.ProdutoVM.Id" />
                         <input type="submit" name="submit" value="Add to cart" class="button" />
                     </fieldset>
                 </form>
@@ -82,6 +82,5 @@
         </div>
     </div>
 </div>
-    </div>
-</div>
+  
 <!-- //Single Page -->

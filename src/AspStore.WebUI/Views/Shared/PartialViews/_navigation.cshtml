@@ -1,20 +1,23 @@
-﻿<div class="navbar-inner">
+﻿@model IndexModel
+
+<div class="navbar-inner">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="agileits-navi_search">
-                <form action="#" method="post">
-                    <select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
+                <form asp-controller="Home" asp-action="ListarProdutosPorCategoria" method="post">
+                    <input type="submit" value="Adicionar" class="btn btn-primary" />
+                    <select asp-for="Catalogo.Categoria.Id" asp-items="@ViewBag.Categorias" name="categoriaSelecionada" id="agileinfo-nav_search" class="border" action="ListarProdutosPorCategoria" required="">
+
                         <option value="">All Categories</option>
-                        <option value="Televisions">Televisions</option>
-                        <option value="Headphones">Headphones</option>
-                        <option value="Computers">Computers</option>
-                        <option value="Appliances">Appliances</option>
-                        <option value="Mobiles">Mobiles</option>
-                        <option value="Fruits &amp; Vegetables">Tv &amp; Video</option>
-                        <option value="iPad & Tablets">iPad & Tablets</option>
-                        <option value="Cameras & Camcorders">Cameras & Camcorders</option>
-                        <option value="Home Audio & Theater">Home Audio & Theater</option>
+                        @*@foreach (var produto in Model.Categorias)
+            {
+                <option value="@produto.Id">@produto.Nome</option>
+            }*@
+
                     </select>
+
+
+
                 </form>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
