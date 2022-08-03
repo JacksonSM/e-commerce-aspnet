@@ -19,7 +19,7 @@ namespace AspStore.Application.ViewModels.ConjutoCarrinho
         public int Quantidade { get; private set; }
 
         [DisplayName(displayName: "Preço")]
-        public double Preco { get; set; }
+        public decimal Preco { get; set; }
 
         public ProdutoCarrinhoViewModel(int carrinhoId,
             int produtoId, ProdutoViewModel produto)

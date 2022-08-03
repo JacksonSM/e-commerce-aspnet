@@ -33,7 +33,7 @@ namespace AspStore.WebUI.Infra
             var path = Path.Combine(_webHostEnvironment.WebRootPath + $"\\uploads\\imagens_produtos\\");
             if (File.Exists(_webHostEnvironment.WebRootPath + $"\\uploads\\imagens_produtos\\{produtoCodigoInterno}_principal.png"))
             {
-                var arquivos =  Directory.EnumerateFiles(path,$"{produtoCodigoInterno}*", SearchOption.TopDirectoryOnly).ToArray();
+                var arquivos =  Directory.EnumerateFiles(path,$"{produtoCodigoInterno}_*", SearchOption.TopDirectoryOnly).ToArray();
                 List<string> listaFileName = new List<string>();
                 foreach (var item in arquivos)
                 {

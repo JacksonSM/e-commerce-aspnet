@@ -2,11 +2,12 @@ using AspStore.CrossCutting;
 using AspStore.WebUI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-
+using System.Globalization;
+using System.Threading;
 
 namespace AspStore.WebUI
 {
@@ -32,11 +33,13 @@ namespace AspStore.WebUI
             services.AddAppService();
             services.AddControllersWithViews();
 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

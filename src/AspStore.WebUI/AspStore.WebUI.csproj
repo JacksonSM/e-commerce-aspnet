@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc.pt-br" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNet.Web.Optimization" Version="1.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
       <PrivateAssets>all</PrivateAssets>
@@ -18,10 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AspStore.CrossCutting\AspStore.CrossCutting.csproj" />
     <ProjectReference Include="..\AspStore.Infra.Data\AspStore.Infra.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\uploads\imagens_produtos\" />
   </ItemGroup>
 
 </Project>

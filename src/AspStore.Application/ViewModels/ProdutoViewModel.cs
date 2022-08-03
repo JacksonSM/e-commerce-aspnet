@@ -8,12 +8,14 @@ namespace AspStore.Application.ViewModels
         public int Id { get; set; }
         [DisplayName(displayName: "Nome")]
         [Required(ErrorMessage = "Campo {0} é requerido.")]
-        [StringLength(maximumLength: 50, ErrorMessage = "O campo {0} deve ter entre {2} e {1} caracteres.", MinimumLength = 2)]
+        [StringLength(maximumLength: 100, ErrorMessage = "O campo {0} deve ter entre {2} e {1} caracteres.", MinimumLength = 2)]
         public string Nome { get; set; }
 
+        [DataType(DataType.Currency)]
         [DisplayName(displayName: "Preço")]
         [Required(ErrorMessage = "Campo {0} é requerido.")]
-        public double Preco { get; set; }
+   
+        public decimal Preco { get; set; }
 
         [DisplayName(displayName: "Estoque")]
         [Required(ErrorMessage = "Campo {0} é requerido.")]
