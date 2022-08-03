@@ -47,7 +47,6 @@ namespace AspStore.WebUI.Controllers
 
             return RedirectToAction(nameof(Contato));
         }
-        
 
     }
 }
