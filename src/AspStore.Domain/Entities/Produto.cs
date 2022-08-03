@@ -7,6 +7,7 @@ namespace AspStore.Domain.Entities
         public string Nome { get; set; }
         public decimal Preco { get; set; }
         public int Estoque { get; set; }
+        public string Descricao { get; set; }
         public int CodigoInterno { get; set; }
 
         public int CategoriaId { get; set; }
