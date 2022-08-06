@@ -1,0 +1,37 @@
+﻿@model IndexModel
+
+@foreach (var produto in Model.Catalogo.ProdutosVM)
+{
+    <!-- first section -->
+
+    <div class="col-md-4 product-men mt-5">
+        <div class="men-pro-item simpleCart_shelfItem">
+            <div class="men-thumb-item text-center">
+                <img src="/uploads/imagens_produtos/@(produto.CodigoInterno)_principal.png" height="200" width="200" alt="">
+                <div class="men-cart-pro">
+                    <div class="inner-men-cart-pro">
+                        <a asp-controller="Home" asp-action="PaginaProduto" asp-route-produtoId="@produto.Id" class="link-product-add-cart">Ver Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item-info-product text-center border-top mt-4">
+                <h4 class="pt-1">
+                    <a href="single.html">@produto.Nome</a>
+                </h4>
+                <div class="info-product-price my-2">
+                    <span class="item_price">@Html.DisplayFor(modelItem => produto.Preco)</span>
+                </div>
+                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                    <form action="#" method="post">
+                        <fieldset>
+                            <input type="hidden" name="produtoId" value="@produto.Id" />
+                            <input type="submit" name="submit" value="+ Carrinho" class="button btn" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- //first section -->
+}

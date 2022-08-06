@@ -1,4 +1,5 @@
 using AspStore.CrossCutting;
+using AspStore.WebUI.Extensions.Helpers;
 using AspStore.WebUI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,7 @@ namespace AspStore.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IGerenciadorImagens, GerenciadorImagens>();
+            services.AddScoped<IFiltragemCatalago, FiltragemCatalago>();
             services.AddTransient<IUnitOfUpload, UnitOfUpload>();
 
             services.AddDbContextService(Configuration);

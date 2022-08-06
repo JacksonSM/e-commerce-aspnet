@@ -1,4 +1,5 @@
 ﻿using AspStore.Application.Interfaces.AppService;
+using AspStore.WebUI.Extensions.Helpers;
 using AspStore.WebUI.Infra;
 using AspStore.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,29 +13,39 @@ namespace AspStore.WebUI.Controllers
         private readonly IProdutoAppService _serviceProduto;
         private readonly ICategoriaAppService _serviceCategoria;
         private readonly IGerenciadorImagens _gerirImagens;
+        private readonly IFiltragemCatalago _filtrarCatalago;
         public IndexModel IndexModel { get; set; } = new IndexModel();
 
-        public HomeController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria, IGerenciadorImagens gerirImagens)
+        public HomeController(IProdutoAppService serviceProduto, ICategoriaAppService serviceCategoria,
+            IGerenciadorImagens gerirImagens, IFiltragemCatalago filtrarCatalago)
         {
             _serviceProduto = serviceProduto;
             _serviceCategoria = serviceCategoria;
             _gerirImagens = gerirImagens;
+            _filtrarCatalago = filtrarCatalago;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? categoriaSelecionada)
         {
-            IndexModel.Catalogo.Produtos =  await _serviceProduto.SelecionarTodos();
+
+            IndexModel.Catalogo = _filtrarCatalago.AplicarFiltro(categoriaSelecionada);
+
+
+          
             IndexModel.Categorias = await _serviceCategoria.SelecionarTodos();
             ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");
+
             return View(IndexModel);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ListarProdutosPorCategoria(int catalogoId)
+      
+
+        [HttpGet]
+        public async Task<IActionResult> CatalogoFiltradoPorCategoria(int categoriaSelecionada)
         {
-            var va = 1;
-            //var categoria = await _serviceCategoria.ObterCategoriaComProdutos(categoriaId);
-            return View();
+            IndexModel catalogo = new IndexModel();
+            catalogo.Catalogo.ProdutosVM = await _serviceProduto.SelecionarTodos(p => p.CategoriaId == categoriaSelecionada);
+            catalogo.Catalogo.EstaFiltrada = true;
+            return RedirectToAction("Index", new { indexModel = catalogo});
         }
 
         public IActionResult Contato()

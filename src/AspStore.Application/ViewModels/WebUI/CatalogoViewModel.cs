@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using AspStore.Application.Interfaces.AppService;
+using System.Collections.Generic;
 
 namespace AspStore.Application.ViewModels.WebUI
 {
     public class CatalogoViewModel
     {
-        public IEnumerable<ProdutoViewModel> Produtos { get; set; }
-        public CategoriaViewModel Categoria { get; set; } = new CategoriaViewModel();
-
+        public IEnumerable<ProdutoViewModel> ProdutosVM { get; set; }
+        public CategoriaViewModel CategoriaVM { get; set; }
+        public int? CategoriaAplicada { get; set; } 
+        public bool EstaFiltrada { get; set; }
     }
 }
