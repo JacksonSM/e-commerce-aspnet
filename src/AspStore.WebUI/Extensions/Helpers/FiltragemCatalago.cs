@@ -1,5 +1,6 @@
 ﻿using AspStore.Application.Interfaces.AppService;
 using AspStore.Application.ViewModels.WebUI;
+using System.Linq;
 
 namespace AspStore.WebUI.Extensions.Helpers
 {
@@ -12,17 +13,39 @@ namespace AspStore.WebUI.Extensions.Helpers
             _serviceProduto = serviceProduto;
         }
 
-        public  CatalogoViewModel AplicarFiltro(int? categoriaAplicada)
+        public  CatalogoViewModel AplicarFiltro(int? categoriaAplicada,int? precoMinimo,int? precoMaximo)
         {
-            CatalogoViewModel catalogo = new CatalogoViewModel();
 
-            if (categoriaAplicada == null || categoriaAplicada == 0) 
+            CatalogoViewModel catalogo = new CatalogoViewModel();
+            catalogo.CategoriaAplicada = categoriaAplicada;
+
+            catalogo.ProdutosVM = _serviceProduto.SelecionarTodos().Result;
+
+            if (categoriaAplicada != null) 
             {
-                catalogo.ProdutosVM = _serviceProduto.SelecionarTodos().Result;
-                return catalogo;
+                catalogo.ProdutosVM = catalogo.ProdutosVM.Where(p => p.CategoriaId == categoriaAplicada);
+
             }
 
-            catalogo.ProdutosVM = _serviceProduto.SelecionarTodos(p => p.CategoriaId == categoriaAplicada).Result;
+
+            if(precoMinimo != null && precoMaximo == null)
+            {
+                catalogo.ProdutosVM = catalogo.ProdutosVM.Where(p => p.Preco <= precoMinimo); 
+                catalogo.PrecoMinimo = precoMinimo; 
+            }
+            else if (precoMaximo != null && precoMinimo == null)
+            {
+                catalogo.ProdutosVM = catalogo.ProdutosVM.Where(p => p.Preco <= precoMinimo);
+                catalogo.PrecoMaximo = precoMaximo; 
+            }
+            else if(precoMinimo != null && precoMaximo != null)    
+            {
+                catalogo.ProdutosVM = catalogo.ProdutosVM.Where(p => p.Preco >= precoMinimo && p.Preco <= precoMaximo); 
+                catalogo.PrecoMinimo= precoMinimo;
+                catalogo.PrecoMaximo = precoMaximo;
+            }  
+
+
             catalogo.EstaFiltrada = true;
 
             return catalogo;
