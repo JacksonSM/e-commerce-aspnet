@@ -25,10 +25,10 @@ namespace AspStore.WebUI.Controllers
             _filtrarCatalago = filtrarCatalago;
         }
 
-        public async Task<IActionResult> Index(int? categoriaSelecionada,int? precoMinimo,int? precoMaximo)
+        public async Task<IActionResult> Index(int? categoriaSelecionada,int? precoMinimo,int? precoMaximo, string pesquisa)
         {
 
-            IndexModel.Catalogo = _filtrarCatalago.AplicarFiltro(categoriaSelecionada, precoMinimo, precoMaximo);
+            IndexModel.Catalogo = _filtrarCatalago.AplicarFiltro(categoriaSelecionada, precoMinimo, precoMaximo, pesquisa);
           
             IndexModel.Categorias = await _serviceCategoria.SelecionarTodos();
             ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");

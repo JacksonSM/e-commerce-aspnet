@@ -13,7 +13,7 @@ namespace AspStore.WebUI.Extensions.Helpers
             _serviceProduto = serviceProduto;
         }
 
-        public  CatalogoViewModel AplicarFiltro(int? categoriaAplicada,int? precoMinimo,int? precoMaximo)
+        public  CatalogoViewModel AplicarFiltro(int? categoriaAplicada,int? precoMinimo,int? precoMaximo, string pesquisa)
         {
 
             CatalogoViewModel catalogo = new CatalogoViewModel();
@@ -43,7 +43,13 @@ namespace AspStore.WebUI.Extensions.Helpers
                 catalogo.ProdutosVM = catalogo.ProdutosVM.Where(p => p.Preco >= precoMinimo && p.Preco <= precoMaximo); 
                 catalogo.PrecoMinimo= precoMinimo;
                 catalogo.PrecoMaximo = precoMaximo;
-            }  
+            }
+
+            if (!string.IsNullOrEmpty(pesquisa))
+            {
+                catalogo.Pesquisa = pesquisa;
+                catalogo.ProdutosVM = catalogo.ProdutosVM.Where(p => p.Nome.ToUpper().Contains(pesquisa.ToUpper()));
+            }
 
 
             catalogo.EstaFiltrada = true;

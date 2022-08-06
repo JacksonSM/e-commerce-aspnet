@@ -10,6 +10,7 @@ namespace AspStore.Application.ViewModels.WebUI
         public int? CategoriaAplicada { get; set; }
         public decimal? PrecoMinimo { get; set; }
         public decimal? PrecoMaximo { get; set; }
+        public string Pesquisa { get; set; }
 
         public bool EstaFiltrada { get; set; }
     }
