@@ -1,4 +1,5 @@
 using AspStore.CrossCutting;
+using AspStore.WebUI.Configuration;
 using AspStore.WebUI.Extensions.Helpers;
 using AspStore.WebUI.Infra;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,8 @@ namespace AspStore.WebUI
             services.AddScoped<IFiltragemCatalago, FiltragemCatalago>();
             services.AddTransient<IUnitOfUpload, UnitOfUpload>();
 
+
+            services.AddIdentityConfig(Configuration);
             services.AddDbContextService(Configuration);
             services.AddAutoMapperService();
             services.AddRepositoryServices();
