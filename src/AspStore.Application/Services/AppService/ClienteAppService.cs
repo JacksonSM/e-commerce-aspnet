@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace AspStore.Application._services
+namespace AspStore.Application.Services.AppService
 {
-    public class ClienteApp_service : IClienteAppService<Cliente>
+    public class ClienteAppService : IClienteAppService
     {
         private readonly IMapper _mapper;
         private readonly IClienteDomainService _service;
 
-        public ClienteApp_service(IMapper mapper, IClienteDomainService pro_service)
+        public ClienteAppService(IMapper mapper, IClienteDomainService pro_service)
         {
             _mapper = mapper;
             _service = pro_service;

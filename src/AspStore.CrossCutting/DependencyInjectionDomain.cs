@@ -12,6 +12,7 @@ namespace AspStore.CrossCutting
         {
             services.AddScoped<IProdutoDomainService, ProdutoDomainService>();
             services.AddScoped<ICategoriaDomainService, CategoriaDomainService>();
+            services.AddScoped<IClienteDomainService, ClienteDomainService>();
 
             return services;
         }

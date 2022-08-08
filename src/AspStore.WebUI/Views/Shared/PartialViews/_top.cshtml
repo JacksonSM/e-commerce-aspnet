@@ -1,4 +1,9 @@
-﻿<div class="agile-main-top">
+﻿@using Microsoft.AspNetCore.Identity
+@using AspStore.WebUI.Extensions.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="agile-main-top">
     <div class="container-fluid">
         <div class="row main-top-w3l py-2">
             <div class="col-lg-4 header-most-top">
@@ -23,16 +28,30 @@
                     <li class="text-center border-right text-white">
                         <i class="fas fa-phone mr-2"></i> 001 234 5678
                     </li>
-                    <li class="text-center border-right text-white">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-                            <i class="fas fa-sign-in-alt mr-2"></i> Log In
-                        </a>
-                    </li>
-                    <li class="text-center text-white">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Register
-                        </a>
-                    </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                        </li>
+                        <li class="nav-item">
+                            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Sair</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="text-center border-right text-white">
+                            <a asp-area="Identity" asp-page="/Account/Login" class="text-white">
+                                <i class="fas fa-sign-in-alt mr-2"></i> Entre
+                            </a>
+                        </li>
+                        <li class="text-center text-white">
+                            <a asp-area="Identity" asp-page="/Account/Register" class="text-white">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Registrar
+                            </a>
+                        </li>
+                    }
                 </ul>
                 <!-- //header lists -->
             </div>

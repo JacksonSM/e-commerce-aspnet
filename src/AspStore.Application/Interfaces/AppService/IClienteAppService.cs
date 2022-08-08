@@ -1,9 +1,10 @@
 ﻿using AspStore.Application.ViewModels;
+using AspStore.Entities;
 using System.Threading.Tasks;
 
 namespace AspStore.Application.Interfaces.AppService
 {
-    public interface IClienteAppService<TEntity> : IGenericAppService<ClienteViewModel, TEntity>
+    public interface IClienteAppService : IGenericAppService<ClienteViewModel, Cliente>
     {
         Task<ClienteViewModel> ObterClienteComCarrinho(int ClienteId);
         Task<ClienteViewModel> ObterClienteComListaEnderecos(int ClienteId);

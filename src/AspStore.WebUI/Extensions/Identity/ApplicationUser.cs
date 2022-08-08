@@ -25,6 +25,7 @@ namespace AspStore.WebUI.Extensions.Identity
         public DateTime DataNascimento { get; set; }
 
         [PersonalData]
+        [StringLength(maximumLength: 11, ErrorMessage = "O campo {0} deve contém {1} números!", MinimumLength = 11)]
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         [Display(Name = "CPF")]
         public string CPF { get; set; }

@@ -1,7 +1,7 @@
 ﻿using AspStore.Application.Interfaces.AppService;
 using AspStore.Application.Mappings;
 using AspStore.Application.Services;
-using AutoMapper;
+using AspStore.Application.Services.AppService;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -20,6 +20,7 @@ namespace AspStore.CrossCutting
         {
             services.AddScoped<IProdutoAppService, ProdutoAppService>();
             services.AddScoped<ICategoriaAppService, CategoriaAppService>();
+            services.AddScoped<IClienteAppService, ClienteAppService>();
 
             return services;
         }

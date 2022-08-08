@@ -38,7 +38,26 @@ namespace AspStore.WebUI.Configuration
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>().AddRoles<IdentityRole>()
+            services.AddDefaultIdentity<ApplicationUser>(opt =>
+            {
+
+                // User Config
+                opt.User.RequireUniqueEmail = true;
+
+                // Lockout Config
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.MaxFailedAccessAttempts = 4;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(4);
+
+                // SignIn Config
+                opt.SignIn.RequireConfirmedPhoneNumber = false;
+                opt.SignIn.RequireConfirmedAccount = false;
+                opt.SignIn.RequireConfirmedEmail = false; 
+
+               
+
+
+            }).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             return services;
