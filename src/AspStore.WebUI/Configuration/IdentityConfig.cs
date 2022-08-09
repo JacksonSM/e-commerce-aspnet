@@ -1,4 +1,4 @@
-﻿using AspStore.WebUI.Data;
+﻿using AspStore.WebUI.Areas.Identity.Data;
 using AspStore.WebUI.Extensions.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;

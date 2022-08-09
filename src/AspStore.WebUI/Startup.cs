@@ -1,15 +1,14 @@
 using AspStore.CrossCutting;
 using AspStore.WebUI.Configuration;
 using AspStore.WebUI.Extensions.Helpers;
+using AspStore.WebUI.Extensions.Identity.Services;
 using AspStore.WebUI.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Globalization;
-using System.Threading;
 
 namespace AspStore.WebUI
 {
@@ -27,6 +26,9 @@ namespace AspStore.WebUI
         {
             services.AddScoped<IGerenciadorImagens, GerenciadorImagens>();
             services.AddScoped<IFiltragemCatalago, FiltragemCatalago>();
+            services.AddScoped<IUserClaimsPrincipalFactory<Extensions.Identity.ApplicationUser>, UserClaimsService>();
+
+
             services.AddTransient<IUnitOfUpload, UnitOfUpload>();
 
 

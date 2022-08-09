@@ -1,7 +1,5 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using AspStore.WebUI.Extensions.Identity
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
+﻿
+@inject AspStore.Domain.Interfaces.IUserInContext _user
 
 <div class="agile-main-top">
     <div class="container-fluid">
@@ -28,10 +26,10 @@
                     <li class="text-center border-right text-white">
                         <i class="fas fa-phone mr-2"></i> 001 234 5678
                     </li>
-                    @if (SignInManager.IsSignedIn(User))
+                    @if (_user.IsAuthenticated())
                     {
                         <li class="nav-item">
-                            <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Olá !! @UserManager.GetUserName(User)!</a>
+                            <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Olá !! @_user.Name !</a>
                         </li>
                         <li class="nav-item">
                             <form id="logoutForm" class="text-white" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
