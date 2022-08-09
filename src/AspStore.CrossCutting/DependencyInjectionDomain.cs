@@ -1,4 +1,6 @@
-﻿using AspStore.Domain.Interfaces.Services;
+﻿using AspStore.CrossCutting.Helpers;
+using AspStore.Domain.Interfaces;
+using AspStore.Domain.Interfaces.Services;
 using AspStore.Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +15,7 @@ namespace AspStore.CrossCutting
             services.AddScoped<IProdutoDomainService, ProdutoDomainService>();
             services.AddScoped<ICategoriaDomainService, CategoriaDomainService>();
             services.AddScoped<IClienteDomainService, ClienteDomainService>();
+
 
             return services;
         }

@@ -1,10 +1,13 @@
-﻿using AspStore.Domain.Interfaces.Repository;
+﻿using AspStore.CrossCutting.Helpers;
+using AspStore.Domain.Interfaces;
+using AspStore.Domain.Interfaces.Repository;
 using AspStore.Domain.Interfaces.Repository.ConjuntoCarrinho;
 using AspStore.Domain.Interfaces.Repository.ConjuntoPedido;
 using AspStore.Infra.Data.ORM;
 using AspStore.Infra.Data.Repository;
 using AspStore.Infra.Data.Repository.ConjuntoCarrinho;
 using AspStore.Infra.Data.Repository.ConjuntoPedido;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +38,14 @@ namespace AspStore.CrossCutting
         {
             services.AddDbContext<AspStoreDbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            return services;
+        }
+        public static IServiceCollection AddCrossCuttingDependency(this IServiceCollection services)
+        {
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUserInContext, AspNetUser>();
 
             return services;
         }

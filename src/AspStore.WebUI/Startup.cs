@@ -37,7 +37,8 @@ namespace AspStore.WebUI
             services.AddDomainService();
             services.AddAppService();
             services.AddControllersWithViews();
-
+            services.AddCrossCuttingDependency();
+       
 
         }
 
