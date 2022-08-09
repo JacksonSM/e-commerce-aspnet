@@ -65,9 +65,9 @@ namespace AspStore.Domain.Services
 
 
 
-        public async Task<Cliente> ObterClienteComCarrinho(int ClienteId)
+        public async Task<Cliente> ObterClienteComCarrinho(string CPF)
         {
-            return await _repo.ObterClienteComCarrinho(ClienteId);
+            return await _repo.ObterClienteComCarrinho(CPF);
         }
 
         public async Task<Cliente> ObterClienteComListaEnderecos(int ClienteId)

@@ -1,7 +1,9 @@
 ﻿using AspStore.Application.Interfaces.AppService.ConjutoCarrinho;
+using AspStore.Application.ViewModels;
 using AspStore.Application.ViewModels.ConjutoCarrinho;
 using AspStore.Domain.Entities.ConjuntoCarrinho;
 using AspStore.Domain.Interfaces.Services.ConjutoCarrinho;
+using AspStore.Entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -45,6 +47,13 @@ namespace AspStore.Application.Services.ConjutoCarrinho
         public async Task<CarrinhoViewModel> ObterCarrinhoComProduto(int ClienteId)
         {
             return _mapper.Map<CarrinhoViewModel>(await _service.ObterCarrinhoComProduto(ClienteId));
+        }
+
+        public async Task SalvarProdutoNoCarrinho(ClienteViewModel clienteVM, ProdutoCarrinhoViewModel produtoCarrinhoVM)
+        {
+            var cliente = _mapper.Map<Cliente>(clienteVM);
+            var produtoCarrinho = _mapper.Map<ProdutoCarrinho>(produtoCarrinhoVM);
+            await _service.SalvarProdutoNoCarrinho(cliente, produtoCarrinho);
         }
 
         public int Save()

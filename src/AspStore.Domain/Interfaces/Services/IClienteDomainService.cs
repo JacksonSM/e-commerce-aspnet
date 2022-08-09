@@ -5,7 +5,7 @@ namespace AspStore.Domain.Interfaces.Services
 {
     public interface IClienteDomainService : IGenericDomainService<Cliente>
     {
-        Task<Cliente> ObterClienteComCarrinho(int ClienteId);
+        Task<Cliente> ObterClienteComCarrinho(string CPF);
         Task<Cliente> ObterClienteComListaEnderecos(int ClienteId);
         Task<Cliente> ObterClienteComListaPedidos(int ClienteId);
     }

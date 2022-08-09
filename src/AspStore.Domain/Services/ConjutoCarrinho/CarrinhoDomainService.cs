@@ -1,6 +1,7 @@
 ﻿using AspStore.Domain.Entities.ConjuntoCarrinho;
 using AspStore.Domain.Interfaces.Repository.ConjuntoCarrinho;
 using AspStore.Domain.Interfaces.Services.ConjutoCarrinho;
+using AspStore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -46,6 +47,11 @@ namespace AspStore.Domain.Services.ConjutoCarrinho
         public async Task<Carrinho> ObterCarrinhoComProduto(int ClienteId)
         {
             return await _repo.ObterCarrinhoComProduto(ClienteId);
+        }
+
+        public async Task SalvarProdutoNoCarrinho(Cliente cliente, ProdutoCarrinho produtoCarrinho)
+        {
+            await _repo.SalvarProdutoNoCarrinho(cliente, produtoCarrinho);
         }
 
         public int Save()

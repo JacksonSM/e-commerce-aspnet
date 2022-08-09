@@ -42,9 +42,9 @@ namespace AspStore.Application.Services.AppService
             await _service.ExcluirPorId(id);
         }
 
-        public async Task<ClienteViewModel> ObterClienteComCarrinho(int ClienteId)
+        public async Task<ClienteViewModel> ObterClienteComCarrinho(string CPF)
         {
-            return _mapper.Map<ClienteViewModel>(await _service.ObterClienteComCarrinho(ClienteId));
+            return _mapper.Map<ClienteViewModel>(await _service.ObterClienteComCarrinho(CPF));
         }
 
         public async Task<ClienteViewModel> ObterClienteComListaEnderecos(int ClienteId)

@@ -12,12 +12,12 @@ namespace AspStore.Infra.Data.Repository
         {
             _context = context;
         }
-        public async Task<Cliente> ObterClienteComCarrinho(int ClienteId)
+        public async Task<Cliente> ObterClienteComCarrinho(string CPF)
         {
             return await _context.Cliente
                     .Include(p => p.Carrinho)
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(c => c.Id == ClienteId);
+                    .FirstOrDefaultAsync(c => c.CPF.NumeroCPF == CPF);
         }
 
         public async Task<Cliente> ObterClienteComListaEnderecos(int ClienteId)
@@ -35,5 +35,7 @@ namespace AspStore.Infra.Data.Repository
                     .AsNoTracking()
                     .FirstOrDefaultAsync(c => c.Id == ClienteId);
         }
+
+     
     }
 }

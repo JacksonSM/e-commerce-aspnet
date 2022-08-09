@@ -1,7 +1,9 @@
 ﻿using AspStore.Application.Interfaces.AppService;
+using AspStore.Application.Interfaces.AppService.ConjutoCarrinho;
 using AspStore.Application.Mappings;
 using AspStore.Application.Services;
 using AspStore.Application.Services.AppService;
+using AspStore.Application.Services.ConjutoCarrinho;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -21,6 +23,7 @@ namespace AspStore.CrossCutting
             services.AddScoped<IProdutoAppService, ProdutoAppService>();
             services.AddScoped<ICategoriaAppService, CategoriaAppService>();
             services.AddScoped<IClienteAppService, ClienteAppService>();
+            services.AddScoped<ICarrinhoAppService, CarrinhoAppService>();
 
             return services;
         }

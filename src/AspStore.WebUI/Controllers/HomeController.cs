@@ -1,4 +1,7 @@
 ﻿using AspStore.Application.Interfaces.AppService;
+using AspStore.Application.Interfaces.AppService.ConjutoCarrinho;
+using AspStore.Application.ViewModels.ConjutoCarrinho;
+using AspStore.Domain.Interfaces;
 using AspStore.WebUI.Extensions.Helpers;
 using AspStore.WebUI.Extensions.Identity;
 using AspStore.WebUI.Infra;
@@ -14,21 +17,32 @@ namespace AspStore.WebUI.Controllers
     {
         private readonly IProdutoAppService _serviceProduto;
         private readonly ICategoriaAppService _serviceCategoria;
+        private readonly ICarrinhoAppService _serviceCarrrinho;
+        private readonly IClienteAppService _serviceCliente;
+
         private readonly IGerenciadorImagens _gerirImagens;
         private readonly IFiltragemCatalago _filtrarCatalago;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IUserInContext _user;
+
         public IndexModel IndexModel { get; set; } = new IndexModel();
 
         public HomeController(
-            IProdutoAppService serviceProduto, 
+            IProdutoAppService serviceProduto,
             ICategoriaAppService serviceCategoria,
-            IGerenciadorImagens gerirImagens, 
-            IFiltragemCatalago filtrarCatalago)
+            IGerenciadorImagens gerirImagens,
+            IFiltragemCatalago filtrarCatalago,
+            IUserInContext user,
+            ICarrinhoAppService serviceCarrrinho,
+            IClienteAppService serviceCliente)
         {
             _serviceProduto = serviceProduto;
             _serviceCategoria = serviceCategoria;
+            _serviceCarrrinho = serviceCarrrinho;
+            _serviceCliente = serviceCliente;
             _gerirImagens = gerirImagens;
             _filtrarCatalago = filtrarCatalago;
+            _user = user;
+
         }
 
         public async Task<IActionResult> Index(int? categoriaSelecionada, int? precoMinimo, int? precoMaximo, string pesquisa)
@@ -69,8 +83,16 @@ namespace AspStore.WebUI.Controllers
 
             return View(IndexModel);
         }
+
+        
         public async Task<IActionResult> AdicionarAoCarrinho(int produtoId)
         {
+            var cpf = _user.GetCPF();
+            var cliente = await _serviceCliente.ObterClienteComCarrinho(cpf);
+            var produtoVM = await _serviceProduto.SelecionarPorId(produtoId);
+            var produtoCarrinho = new ProdutoCarrinhoViewModel(cliente.Carrinho.Id, produtoVM);
+            await _serviceCarrrinho.SalvarProdutoNoCarrinho(cliente, produtoCarrinho);
+            await _serviceCarrrinho.SaveAsync();
 
             return RedirectToAction("Index");
         }

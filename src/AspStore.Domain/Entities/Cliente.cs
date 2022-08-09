@@ -10,6 +10,7 @@ namespace AspStore.Entities
     {
         public string Nome { get; set; }
         public CPF CPF { get; set; }
+        public int CarrinhoId { get; set; }
         public Carrinho Carrinho { get; set; }
         public IEnumerable<Endereco> Endereco { get; set; }
         public IEnumerable<Pedido> Pedido { get; set; }

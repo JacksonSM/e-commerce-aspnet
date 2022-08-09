@@ -21,7 +21,10 @@ namespace AspStore.Infra.Data.EntitiesMap
                    .IsRequired();
 
             builder.HasMany(r => r.Endereco).WithOne().HasForeignKey(r => r.ClienteId);
-                                     
+
+            builder.HasOne(r => r.Carrinho).WithOne(r => r.Cliente).HasForeignKey<Cliente>(f => f.CarrinhoId);
+
+
         }
     }
 }

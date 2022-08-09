@@ -6,7 +6,7 @@ namespace AspStore.Application.Interfaces.AppService
 {
     public interface IClienteAppService : IGenericAppService<ClienteViewModel, Cliente>
     {
-        Task<ClienteViewModel> ObterClienteComCarrinho(int ClienteId);
+        Task<ClienteViewModel> ObterClienteComCarrinho(string CPF);
         Task<ClienteViewModel> ObterClienteComListaEnderecos(int ClienteId);
         Task<ClienteViewModel> ObterClienteComListaPedidos(int ClienteId);
     }

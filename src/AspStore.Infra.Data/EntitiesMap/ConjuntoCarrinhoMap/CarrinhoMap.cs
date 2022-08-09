@@ -11,8 +11,7 @@ namespace AspStore.Infra.Data.EntitiesMap
             builder.HasKey(k => k.Id);
 
 
-            builder.HasOne(r => r.Cliente).WithOne(r => r.Carrinho).HasForeignKey<Carrinho>(f => f.ClienteId);
-
+          
         }
     }
 }

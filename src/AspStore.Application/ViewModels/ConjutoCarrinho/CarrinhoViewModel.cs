@@ -4,7 +4,9 @@ namespace AspStore.Application.ViewModels.ConjutoCarrinho
 {
     public class CarrinhoViewModel
     {
+        public int? Id { get; set; }
         public int ClienteId { get; set; }
+        public ClienteViewModel Cliente { get; set; }
         public List<ProdutoCarrinhoViewModel> ProdutoCarrinhoModelView { get; set; }
 
         public void AdicionarProduto(ProdutoCarrinhoViewModel produto)
