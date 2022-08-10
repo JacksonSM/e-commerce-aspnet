@@ -4,6 +4,7 @@ using AspStore.Infra.Data.ORM;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspStore.Infra.Data.Migrations
 {
     [DbContext(typeof(AspStoreDbContext))]
-    partial class AspStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220810203619_AdicaoColunaCodigoInternoEmProdutoCarrinho")]
+    partial class AdicaoColunaCodigoInternoEmProdutoCarrinho
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,11 +50,6 @@ namespace AspStore.Infra.Data.Migrations
 
                     b.Property<int>("CodigoInterno")
                         .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<double>("Preco")
                         .HasPrecision(10, 2)

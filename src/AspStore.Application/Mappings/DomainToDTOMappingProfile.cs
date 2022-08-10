@@ -6,7 +6,6 @@ using AspStore.Domain.Entities.ConjuntoCarrinho;
 using AspStore.Domain.Entities.ConjuntoPedido;
 using AspStore.Entities;
 using AutoMapper;
-using System.ComponentModel;
 
 namespace AspStore.Application.Mappings
 {

@@ -10,6 +10,10 @@ namespace AspStore.Infra.Data.EntitiesMap
         {
             builder.HasKey(k => k.Id);
 
+            builder.Property(p => p.Nome)
+                .HasMaxLength(100)
+                .IsRequired();
+
             builder.Property(p => p.Quantidade)
                    .IsRequired();
 

@@ -6,7 +6,7 @@ namespace AspStore.Domain.Interfaces.Services.ConjutoCarrinho
 {
     public interface ICarrinhoDomainService : IGenericDomainService<Carrinho>
     {
-        Task<Carrinho> ObterCarrinhoComProduto(int ClienteId);
+        Task<Carrinho> ObterCarrinhoComProduto(string CPF);
         Task SalvarProdutoNoCarrinho(Cliente cliente, ProdutoCarrinho produtoCarrinho);
     }
 }

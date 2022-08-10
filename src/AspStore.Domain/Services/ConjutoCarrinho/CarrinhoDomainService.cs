@@ -44,9 +44,9 @@ namespace AspStore.Domain.Services.ConjutoCarrinho
             await _repo.ExcluirPorId(id);
         }
 
-        public async Task<Carrinho> ObterCarrinhoComProduto(int ClienteId)
+        public async Task<Carrinho> ObterCarrinhoComProduto(string CPF)
         {
-            return await _repo.ObterCarrinhoComProduto(ClienteId);
+            return await _repo.ObterCarrinhoComProduto(CPF);
         }
 
         public async Task SalvarProdutoNoCarrinho(Cliente cliente, ProdutoCarrinho produtoCarrinho)

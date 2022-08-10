@@ -1,11 +1,13 @@
 ﻿using AspStore.Application.Interfaces.AppService;
 using AspStore.Application.Interfaces.AppService.ConjutoCarrinho;
 using AspStore.Application.ViewModels.ConjutoCarrinho;
+using AspStore.Application.ViewModels.WebUI;
 using AspStore.Domain.Interfaces;
 using AspStore.WebUI.Extensions.Helpers;
 using AspStore.WebUI.Extensions.Identity;
 using AspStore.WebUI.Infra;
 using AspStore.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -43,6 +45,7 @@ namespace AspStore.WebUI.Controllers
             _filtrarCatalago = filtrarCatalago;
             _user = user;
 
+            IndexModel.Catalogo = new CatalogoViewModel();
         }
 
         public async Task<IActionResult> Index(int? categoriaSelecionada, int? precoMinimo, int? precoMaximo, string pesquisa)
@@ -66,8 +69,17 @@ namespace AspStore.WebUI.Controllers
         }
         public IActionResult SobreNos()
         {
-            return View();
+            return View(IndexModel);
         }
+        [Authorize]
+        public async Task<IActionResult> Carrinho()
+        {
+           
+            IndexModel.Carrinho = await _serviceCarrrinho.ObterCarrinhoComProduto(_user.GetCPF());
+            return View(IndexModel);
+        }
+
+
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult EnviarEmail(string nome, string email, string mensagem)
@@ -84,13 +96,13 @@ namespace AspStore.WebUI.Controllers
             return View(IndexModel);
         }
 
-        
+        [Authorize]
         public async Task<IActionResult> AdicionarAoCarrinho(int produtoId)
         {
             var cpf = _user.GetCPF();
             var cliente = await _serviceCliente.ObterClienteComCarrinho(cpf);
             var produtoVM = await _serviceProduto.SelecionarPorId(produtoId);
-            var produtoCarrinho = new ProdutoCarrinhoViewModel(cliente.Carrinho.Id, produtoVM);
+            var produtoCarrinho = new ProdutoCarrinhoViewModel(cliente.Carrinho.Id.Value, produtoVM);
             await _serviceCarrrinho.SalvarProdutoNoCarrinho(cliente, produtoCarrinho);
             await _serviceCarrrinho.SaveAsync();
 

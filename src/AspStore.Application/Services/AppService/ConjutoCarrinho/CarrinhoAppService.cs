@@ -43,10 +43,15 @@ namespace AspStore.Application.Services.ConjutoCarrinho
         {
             await _service.ExcluirPorId(id);
         }
-
-        public async Task<CarrinhoViewModel> ObterCarrinhoComProduto(int ClienteId)
+      
+        public async Task<CarrinhoViewModel> ObterCarrinhoComProduto(string CPF)
         {
-            return _mapper.Map<CarrinhoViewModel>(await _service.ObterCarrinhoComProduto(ClienteId));
+            var carrinho = await _service.ObterCarrinhoComProduto(CPF);
+            var produtosVM = _mapper.Map<List<ProdutoCarrinhoViewModel>>(carrinho.ProdutoCarrinho);
+            var carrinhoVM = _mapper.Map<CarrinhoViewModel>(carrinho);
+            carrinhoVM.ProdutoCarrinhoModelView = produtosVM;
+
+            return carrinhoVM;
         }
 
         public async Task SalvarProdutoNoCarrinho(ClienteViewModel clienteVM, ProdutoCarrinhoViewModel produtoCarrinhoVM)

@@ -7,7 +7,7 @@ namespace AspStore.Application.Interfaces.AppService.ConjutoCarrinho
 {
     public interface ICarrinhoAppService : IGenericAppService<CarrinhoViewModel, Carrinho>
     {
-        Task<CarrinhoViewModel> ObterCarrinhoComProduto(int ClienteId);
+        Task<CarrinhoViewModel> ObterCarrinhoComProduto(string CPF);
         Task SalvarProdutoNoCarrinho(ClienteViewModel cliente, ProdutoCarrinhoViewModel produtoCarrinho);
     }
 }

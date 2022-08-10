@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using AspStore.Entities.ValueObjects;
+using System.Collections.Generic;
 
 namespace AspStore.Application.ViewModels.ConjutoCarrinho
 {
     public class CarrinhoViewModel
     {
         public int? Id { get; set; }
-        public int ClienteId { get; set; }
+        public CPF CPF { get; set; }
         public ClienteViewModel Cliente { get; set; }
         public List<ProdutoCarrinhoViewModel> ProdutoCarrinhoModelView { get; set; }
 
