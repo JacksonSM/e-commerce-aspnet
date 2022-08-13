@@ -64,17 +64,18 @@ namespace AspStore.WebUI.Controllers
             ViewData["Email"] = "aspstorecontato@gmail.com";
             ViewData["Telefone"] = "(83) 99859-2563";
             ViewData["Endereco"] = "Rua Americo, 36";
-
-            return View();
+            ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");
+            return View(IndexModel);
         }
         public IActionResult SobreNos()
         {
+            ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");
             return View(IndexModel);
         }
         [Authorize]
         public async Task<IActionResult> Carrinho()
         {
-           
+            ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");
             IndexModel.Carrinho = await _serviceCarrrinho.ObterCarrinhoComProduto(_user.GetCPF());
             return View(IndexModel);
         }
