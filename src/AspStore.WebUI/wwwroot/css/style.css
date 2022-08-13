@@ -323,7 +323,7 @@ ul.multi-column-dropdown li a:hover {
 /*-- carousel-slider --*/
 
 .carousel-item.item1 {
-    background: url(../images/b1.jpg) no-repeat center;
+    background: url(../uploads/imagens_carrossel/1.png) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -332,7 +332,7 @@ ul.multi-column-dropdown li a:hover {
 }
 
 .carousel-item.item2 {
-    background: url(../images/b2.jpg) no-repeat center;
+    background: url(../uploads/imagens_carrossel/2.png) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -341,7 +341,7 @@ ul.multi-column-dropdown li a:hover {
 }
 
 .carousel-item.item3 {
-    background: url(../images/b3.jpg) no-repeat center;
+    background: url(../uploads/imagens_carrossel/3.png) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -350,7 +350,7 @@ ul.multi-column-dropdown li a:hover {
 }
 
 .carousel-item.item4 {
-    background: url(../images/b4.jpg) no-repeat center;
+    background: url(../uploads/imagens_carrossel/4.png) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

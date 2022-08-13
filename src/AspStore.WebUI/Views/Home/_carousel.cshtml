@@ -1,4 +1,10 @@
-﻿<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+﻿@using AspStore.WebUI.Extensions.Helpers
+@inject IManipuladorArquivoCSVCarrossel _carrossel
+@{
+    var carrossel = _carrossel.ObterCarrossel().Result;
+}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <!-- Indicators-->
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -11,16 +17,15 @@
                     <div class="container">
                         <div class="w3l-space-banner">
                             <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-                                <p>
-                                    Get flat
-                                    <span>10%</span> Cashback
-                                </p>
-                                <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
-                                    The
-                                    <span>Big</span>
-                                    Sale
+
+                                 <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
+                                    @carrossel[0].Titulo
                                 </h3>
-                                <a class="button2" href="product.html">Shop Now </a>
+                                <p>
+                                    @carrossel[0].Descricao
+                                </p>   
+                                <br />
+                                <a class="button2" href="@carrossel[0].URL">Acessar</a>
                             </div>
                         </div>
                     </div>
@@ -29,15 +34,14 @@
                     <div class="container">
                         <div class="w3l-space-banner">
                             <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-                                <p>
-                                    advanced
-                                    <span>Wireless</span> earbuds
-                                </p>
-                                <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
-                                    Best
-                                    <span>Headphone</span>
+                                 <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
+                                    @carrossel[1].Titulo
                                 </h3>
-                                <a class="button2" href="product.html">Shop Now </a>
+                                <p>
+                                    @carrossel[1].Descricao
+                                </p>      
+                                  <br />
+                                <a class="button2" href="@carrossel[1].URL">Acessar</a>
                             </div>
                         </div>
                     </div>
@@ -46,15 +50,14 @@
                     <div class="container">
                         <div class="w3l-space-banner">
                             <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-                                <p>
-                                    Get flat
-                                    <span>10%</span> Cashback
-                                </p>
-                                <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
-                                    New
-                                    <span>Standard</span>
+                                 <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
+                                    @carrossel[2].Titulo
                                 </h3>
-                                <a class="button2" href="product.html">Shop Now </a>
+                                <p>
+                                    @carrossel[2].Descricao
+                                </p>
+                                  <br />
+                                <a class="button2" href="@carrossel[2].URL">Acessar</a>
                             </div>
                         </div>
                     </div>
@@ -63,15 +66,14 @@
                     <div class="container">
                         <div class="w3l-space-banner">
                             <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-                                <p>
-                                    Get Now
-                                    <span>40%</span> Discount
-                                </p>
-                                <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
-                                    Today
-                                    <span>Discount</span>
+                                 <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
+                                    @carrossel[3].Titulo
                                 </h3>
-                                <a class="button2" href="product.html">Shop Now </a>
+                                <p>
+                                    @carrossel[3].Descricao
+                                </p>   
+                                  <br />
+                                <a class="button2" href="@carrossel[3].URL">Acessar</a>
                             </div>
                         </div>
                     </div>

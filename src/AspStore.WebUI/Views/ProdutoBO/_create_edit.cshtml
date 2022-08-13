@@ -29,5 +29,8 @@
     <span asp-validation-for="@Model.CategoriaId" class="text-danger"></span>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
 

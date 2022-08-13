@@ -27,7 +27,7 @@ namespace AspStore.WebUI
         {
             services.AddScoped<IGerenciadorImagens, GerenciadorImagens>();
             services.AddScoped<IFiltragemCatalago, FiltragemCatalago>();
-           
+            services.AddScoped<IManipuladorArquivoCSVCarrossel, ManipuladorArquivoCSVCarrossel>();
 
             services.AddTransient<IUnitOfUpload, UnitOfUpload>();
 

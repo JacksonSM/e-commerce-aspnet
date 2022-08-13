@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AspStore.WebUI.Models.ItemCarrossel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutBackOffice.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Criar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ordem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.URL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ordem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.URL)
+            </td>
+            <td>
+                <a asp-controller="CarrosselBO" asp-action="Edit" asp-route-ordem="@item.Ordem"><span class="material-icons" title="Editar Item">edit</span> </a>
+                <a asp-controller="CarrosselBO" asp-action="Details" asp-route-ordem="@item.Ordem"><span class="material-icons" title="Detalhes Item">info</span> </a>
+                <a asp-controller="CarrosselBO" asp-action="Delete" asp-route-ordem="@item.Ordem"><span class="material-icons" title="Excluir Item">delete</span> </a>       
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

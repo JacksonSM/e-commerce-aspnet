@@ -9,5 +9,10 @@ namespace AspStore.WebUI.Controllers
         {
             return View();
         }
+
+        public IActionResult Carrossel()
+        {
+            return View();
+        }
     }
 }

@@ -51,20 +51,20 @@ namespace AspStore.WebUI.Infra
             File.Delete(path);
         }
 
-        public async void SalvarImagemPrincipal(IFormFile arquivo, int produtoCodigoInterno)
+        public void SalvarImagemPrincipal(IFormFile arquivo, int produtoCodigoInterno)
         {
             ExcluirImagem($"{produtoCodigoInterno}_principal.png");
             var nomeImagem = produtoCodigoInterno + "_principal";
-            _upload.UploadImage(arquivo,nomeImagem);
+            _upload.CarregarImagemProduto(arquivo,nomeImagem);
         }
 
-        public async void SalvarImagens(IFormFileCollection imagens, int produtoCodigoInterno)
+        public void SalvarImagens(IFormFileCollection imagens, int produtoCodigoInterno)
         {
             var contador = 0;
 
             foreach (var imagem in imagens)
             {
-                 _upload.UploadImage(imagem, $"{produtoCodigoInterno}_{contador}");
+                 _upload.CarregarImagemProduto(imagem, $"{produtoCodigoInterno}_{contador}");
                 contador++;
             }
         }

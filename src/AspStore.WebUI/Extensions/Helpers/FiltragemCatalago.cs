@@ -51,8 +51,8 @@ namespace AspStore.WebUI.Extensions.Helpers
                 catalogo.ProdutosVM = catalogo.ProdutosVM.Where(p => p.Nome.ToUpper().Contains(pesquisa.ToUpper()));
             }
 
-
-            catalogo.EstaFiltrada = true;
+            if(categoriaAplicada != null || precoMaximo != null || precoMinimo != null || !string.IsNullOrEmpty(pesquisa))
+                catalogo.EstaFiltrada = true;
 
             return catalogo;
         }

@@ -1,0 +1,50 @@
+﻿@model ItemCarrossel
+
+@{
+    Layout = "~/Views/Shared/_LayoutBackOffice.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Titulo" class="control-label"></label>
+                <input asp-for="@Model.Titulo" class="form-control" />
+                <span asp-validation-for="@Model.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Descricao" class="control-label"></label>
+                <input asp-for="@Model.Descricao" class="form-control" />
+                <span asp-validation-for="@Model.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.URL" class="control-label"></label>
+                <input asp-for="@Model.URL" class="form-control" />
+                <span asp-validation-for="@Model.URL" class="text-danger"></span>
+            </div>
+
+              <div class="form-group">
+                <label asp-for="@Model.Ordem" class="control-label"></label>
+                <input asp-for="@Model.Ordem" class="form-control" />
+                <span asp-validation-for="@Model.Ordem" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Selecione uma Imagem</label>
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                <input type="file" name="imagem" class="form-control" required placeholder="Selecione uma Imagem..." />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
+

@@ -15,20 +15,29 @@ namespace AspStore.WebUI.Infra
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public async void UploadImage(IFormFile file, string codigo)
+        public async void CarregarImagemProduto(IFormFile file, string codigo)
+        {
+            await CarregarImagem(file, codigo, "\\uploads\\imagens_produtos\\");
+        }
+        public async void CarregarImagemCarrossel(IFormFile file, string nomeImagem)
+        {
+            await CarregarImagem(file, nomeImagem, "\\uploads\\imagens_carrossel\\");
+        }
+
+        public async Task CarregarImagem(IFormFile file, string nomeImagem, string path)
         {
             long totalBytes = file.Length;
             string fileName = file.FileName.Trim('"');
             var extension = Path.GetExtension(fileName);
-            fileName = codigo + extension;
-    
+            fileName = nomeImagem + extension;
+
 
 
 
             fileName = fileName.Contains("\\") ? fileName.Substring(fileName.LastIndexOf("\\") + 1) : fileName;
 
             byte[] buffer = new byte[2048 * 1024];
-            using (FileStream output = File.Create(ObterCaminhoMaisNomeDoArquivo(fileName)))
+            using (FileStream output = File.Create(ObterCaminhoMaisNomeDoArquivo(path ,fileName)))
             {
                 using (Stream input = file.OpenReadStream())
                 {
@@ -39,11 +48,13 @@ namespace AspStore.WebUI.Infra
                         totalBytes += readBytes;
                     }
                 }
-            }           
+            }
         }
-        private string ObterCaminhoMaisNomeDoArquivo(string fileName)
+
+        private string ObterCaminhoMaisNomeDoArquivo(string path,string fileName)
         {
-            string path = _webHostEnvironment.WebRootPath + "\\uploads\\imagens_produtos\\";
+            //path == "\\uploads\\imagens_produtos\\"
+            path = _webHostEnvironment.WebRootPath + path;
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
             return path + fileName;
