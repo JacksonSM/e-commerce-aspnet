@@ -66,7 +66,7 @@ namespace AspStore.WebUI.Extensions.Helpers
                     });
                 }
             }
-            return  listaItemCarrossel;
+            return  listaItemCarrossel.OrderBy(anuncio => anuncio.Ordem).ToList();
         }
     }
 }

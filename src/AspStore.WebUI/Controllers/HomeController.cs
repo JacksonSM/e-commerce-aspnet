@@ -61,14 +61,13 @@ namespace AspStore.WebUI.Controllers
 
         public IActionResult Contato()
         {
-            ViewData["Email"] = "aspstorecontato@gmail.com";
-            ViewData["Telefone"] = "(83) 99859-2563";
-            ViewData["Endereco"] = "Rua Americo, 36";
+            IndexModel.Categorias = _serviceCategoria.SelecionarTodos().Result;
             ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");
             return View(IndexModel);
         }
         public IActionResult SobreNos()
         {
+            IndexModel.Categorias = _serviceCategoria.SelecionarTodos().Result;
             ViewBag.Categorias = new SelectList(IndexModel.Categorias, "Id", "Nome");
             return View(IndexModel);
         }

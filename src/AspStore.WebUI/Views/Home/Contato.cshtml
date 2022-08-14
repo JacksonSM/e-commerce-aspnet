@@ -1,7 +1,9 @@
-﻿@{
+﻿@using AspStore.WebUI.Services.Interfaces
+@inject IContatoService _contatoService
+@{
     ViewData["Title"] = "Contato";
     //Layout = "~/Views/Shared/_Layout.cshtml";
-
+    var contato = _contatoService.ObterContato();
 }
 <!-- banner-2 -->
 <div class="page-head_agile_info_w3l">
@@ -39,7 +41,8 @@
                     </div>
                     <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Endereço</h4>
                     <p>
-                        @ViewData["Endereco"]
+                        @contato.Rua, @(contato.NumeroEndereco)
+                        <label>@contato.Bairro @contato.CEP @contato.Cidade </label>
                         <label>Brasil.</label>
                     </p>
                 </div>
@@ -51,7 +54,7 @@
                     </div>
                     <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Telefone</h4>
                     <p>                     
-                        <label>@ViewData["Telefone"]</label>
+                        <label>@contato.Telefone</label>
                     </p>
                 </div>
             </div>
@@ -63,7 +66,7 @@
                     <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
                     <p>                        
                         <label>
-                            <a href="mailto:@ViewData["Email"]">@ViewData["Email"]</a>
+                            <a href="mailto:@(contato.Email)">@contato.Email</a>
                         </label>
                     </p>
                 </div>

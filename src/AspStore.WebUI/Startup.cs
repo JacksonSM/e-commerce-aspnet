@@ -4,6 +4,8 @@ using AspStore.WebUI.Extensions.Helpers;
 using AspStore.WebUI.Extensions.Identity;
 using AspStore.WebUI.Extensions.Identity.Services;
 using AspStore.WebUI.Infra;
+using AspStore.WebUI.Services.ArquivoCSV;
+using AspStore.WebUI.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -26,6 +28,7 @@ namespace AspStore.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IGerenciadorImagens, GerenciadorImagens>();
+            services.AddScoped<IContatoService, ContatoService>();
             services.AddScoped<IFiltragemCatalago, FiltragemCatalago>();
             services.AddScoped<IManipuladorArquivoCSVCarrossel, ManipuladorArquivoCSVCarrossel>();
 
