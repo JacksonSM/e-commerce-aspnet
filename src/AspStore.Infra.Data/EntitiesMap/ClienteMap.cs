@@ -16,7 +16,7 @@ namespace AspStore.Infra.Data.EntitiesMap
                    .IsRequired();
 
             builder.OwnsOne(p => p.CPF)
-                   .Property(p => p.NumeroCPF)
+                   .Property(p => p.Numero)
                    .HasMaxLength(12)
                    .IsRequired();
 

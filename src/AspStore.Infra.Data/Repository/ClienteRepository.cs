@@ -18,7 +18,7 @@ namespace AspStore.Infra.Data.Repository
                     .Include(p => p.Carrinho)
                     .Include(p => p.Carrinho.ProdutoCarrinho)
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(c => c.CPF.NumeroCPF == CPF);
+                    .FirstOrDefaultAsync(c => c.CPF.Numero == CPF);
         }
 
         public async Task<Cliente> ObterClienteComListaEnderecos(int ClienteId)

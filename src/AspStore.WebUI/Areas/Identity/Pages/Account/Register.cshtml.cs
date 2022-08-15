@@ -1,5 +1,6 @@
 ﻿using AspStore.Application.Interfaces.AppService;
 using AspStore.Application.ViewModels;
+using AspStore.Entities.ValueObjects;
 using AspStore.WebUI.Extensions.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -100,6 +101,9 @@ namespace AspStore.WebUI.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
+                if (!CPF.Validar(Input.CPF))
+                    ModelState.AddModelError(String.Empty, "CPF Inválido. Permitido apenas 11 números, portanto, não use caracteres especiais.");
+
                 var user = new ApplicationUser 
                 { 
                     UserName = Input.Email,
@@ -115,7 +119,7 @@ namespace AspStore.WebUI.Areas.Identity.Pages.Account
                     var clienteVM = new ClienteViewModel
                     {
                         Carrinho = new Application.ViewModels.ConjutoCarrinho.CarrinhoViewModel(),
-                        CPF = new Entities.ValueObjects.CPF { NumeroCPF = Input.CPF},
+                        CPF = new CPF(Input.CPF ),
                         Nome = Input.NomeCompleto                
                     };
                     await _clienteAppService.Adicionar(clienteVM);

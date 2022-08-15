@@ -20,7 +20,7 @@ namespace AspStore.Infra.Data.Repository.ConjuntoCarrinho
             return await _context.Carrinho
                 .Include(p => p.ProdutoCarrinho)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.CPF.NumeroCPF == CPF);
+                .FirstOrDefaultAsync(c => c.CPF.Numero == CPF);
         }
 
         public async Task SalvarProdutoNoCarrinho(Cliente cliente, ProdutoCarrinho produtoCarrinho)

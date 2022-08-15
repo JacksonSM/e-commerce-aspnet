@@ -11,7 +11,7 @@ namespace AspStore.Infra.Data.EntitiesMap
             builder.HasKey(k => k.Id);
 
             builder.OwnsOne(p => p.CPF)
-                .Property(p => p.NumeroCPF)
+                .Property(p => p.Numero)
                 .HasMaxLength(12)
                 .IsRequired();
 
