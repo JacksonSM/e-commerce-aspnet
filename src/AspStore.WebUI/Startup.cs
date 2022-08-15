@@ -4,11 +4,13 @@ using AspStore.WebUI.Extensions.Helpers;
 using AspStore.WebUI.Extensions.Identity;
 using AspStore.WebUI.Extensions.Identity.Services;
 using AspStore.WebUI.Infra;
+using AspStore.WebUI.Services.Account;
 using AspStore.WebUI.Services.ArquivoCSV;
 using AspStore.WebUI.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,6 +35,10 @@ namespace AspStore.WebUI
             services.AddScoped<IManipuladorArquivoCSVCarrossel, ManipuladorArquivoCSVCarrossel>();
 
             services.AddTransient<IUnitOfUpload, UnitOfUpload>();
+            services.AddTransient<IEmailSender, EmailSender>();
+
+
+            services.Configure<AutenticacaoSender>(options => Configuration.GetSection("AutenticacaoSender").Bind(options));
 
 
             services.AddIdentityConfig(Configuration);
@@ -68,6 +74,12 @@ namespace AspStore.WebUI
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            var authMsgSenderOpt = new AutenticacaoSender
+            {
+                SendGridUser = Configuration["SendGridUser"],
+                SendGridKey = Configuration["SendGridKey"]
+            };
 
             app.UseEndpoints(endpoints =>
             {
