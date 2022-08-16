@@ -14,6 +14,16 @@ Não planejei muito a arquitetura e o design do código, me dei conta disso quan
 Comecei a desanimar e ai coisas só foram piorando, meu projeto parecia areia movediça, quanto mais eu me mexia mais afundava. Só não desistir por que o que mais ouço é que programador refatora muito.
 então para pratica a refatoração, resolvi continuar desenvolvendo para que no futuro proximo eu voltaria e refatorava aos poucos para depois expandir.
 
+### Ferrementas, Bibliotecas e Serviços usadas
+
+* AspNetCore MVC
+* AspNetCore Identity
+* Entity Framework
+* SendGrid
+* AutoMapper
+
+
+
 [Autor da Template](https://w3layouts.com)
 
 Algumas screenshot da aplicação: 
